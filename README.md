@@ -19,7 +19,7 @@ lost-rpc
 
 ## 结构图
 
-![Alt text](structurechart.png)
+![Alt text](structurechart.jpg)
 
 ## 展望
 
