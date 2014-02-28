@@ -1,0 +1,23 @@
+package com.taobao.teaey.lostrpc;
+
+option java_outer_classname = "TestProto";
+
+option optimize_for = SPEED;
+option java_generic_services = true;
+
+message Login_C2S {
+    required int64 timestamp = 1;
+}
+
+message Login_S2C {
+    required int64 timestamp = 1;
+}
+
+service LoginService {
+    rpc login (Login_C2S) returns (Login_S2C);
+}
+
+service LoginService1 {
+    rpc login1 (Login_C2S) returns (Login_S2C);
+}
+
