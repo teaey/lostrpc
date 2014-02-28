@@ -1,11 +1,11 @@
 lost-rpc
 ========
 
-异步跨平台的RPC实现
+异步跨语言的RPC框架
 
 ## 特性
 
-> * 支持很多编码解码器（Protobuf【跨平台】、Hessian、JDK、Kryo)
+> * 支持很多编码解码器（Protobuf【跨语言】、Hessian、JDK、Kryo)
 > * 支持自定义Codec
 > * 支持自定义Protocol
 > * 实现了消息的同步分发、异步分发
