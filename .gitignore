@@ -5,7 +5,5 @@
 *.war
 *.ear
 target/*
-target/**
-target/**/**
 
 *.i*

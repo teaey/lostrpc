@@ -5,61 +5,29 @@
 
     <groupId>lost-rpc</groupId>
     <packaging>pom</packaging>
-    <version>${master.version}</version>
+    <version>1.0.0.1-SNAPSHOT</version>
     <modules>
-        <module>codec</module>
-        <module>samples</module>
-        <module>concurrent</module>
-        <module>common</module>
-        <module>server</module>
-        <module>client</module>
-        <module>all</module>
+        <module>lost-rpc-concurrent</module>
+        <module>lost-rpc-codec</module>
+        <module>lost-rpc-common</module>
+        <module>lost-rpc-server</module>
+        <module>lost-rpc-client</module>
+        <module>lost-rpc-all</module>
+        <module>lost-rpc-example</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>
 
-    <build>
-        <plugins>
-            <plugin>
-                <groupId>org.apache.maven.plugins</groupId>
-                <artifactId>maven-compiler-plugin</artifactId>
-                <version>2.3.2</version>
-                <configuration>
-                    <source>1.6</source>
-                    <target>1.6</target>
-                    <encoding>UTF-8</encoding>
-                </configuration>
-            </plugin>
-            <plugin>
-                <artifactId>maven-assembly-plugin</artifactId>
-                <configuration>
-                    <descriptors>
-                        <descriptor>jar-assembly.xml</descriptor>
-                    </descriptors>
-                </configuration>
-            </plugin>
-        </plugins>
-        <!--<resources>-->
-        <!--<resource>-->
-        <!--<directory>src/main/resources</directory>-->
-        <!--<filtering>true</filtering>-->
-        <!--<excludes>-->
-        <!--<exclude>jboss-service.xml</exclude>-->
-        <!--</excludes>-->
-        <!--</resource>-->
-        <!--</resources>-->
-    </build>
-
     <artifactId>lost-rpc</artifactId>
+    <name>LostRpc</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <master.version>1.0.0.0-SNAPSHOT</master.version>
     </properties>
     <dependencies>
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
-            <version>4.11</version>
+            <version>4.8.2</version>
             <scope>test</scope>
         </dependency>
     </dependencies>
