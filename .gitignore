@@ -4,9 +4,10 @@
 *.jar
 *.war
 *.ear
-target/*
+
+*target*
 
 *.ipr
 *.iws
 *.iml
-idea/*
+idea
