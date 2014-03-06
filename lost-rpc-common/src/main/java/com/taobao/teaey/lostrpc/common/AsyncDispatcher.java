@@ -11,7 +11,7 @@ import java.util.concurrent.Executor;
 /**
  * @author xiaofei.wxf
  */
-public abstract class AsyncDispatcher<Channel, MsgType> implements Dispatcher<Channel, MsgType> {
+public abstract class AsyncDispatcher<MsgType> implements Dispatcher<MsgType> {
     private static final Logger logger = LoggerFactory.getLogger(AsyncDispatcher.class);
 
     public AsyncDispatcher() {
@@ -29,12 +29,12 @@ public abstract class AsyncDispatcher<Channel, MsgType> implements Dispatcher<Ch
     private final Executor executor;
 
     public class AsyncTask implements Task {
-        AsyncTask(Channel c, MsgType p) {
+        AsyncTask(Connection c, MsgType p) {
             this.c = c;
             this.p = p;
         }
 
-        Channel c;
+        Connection c;
         MsgType p;
 
         @Override
@@ -47,10 +47,10 @@ public abstract class AsyncDispatcher<Channel, MsgType> implements Dispatcher<Ch
         }
     }
 
-    public abstract void asyncDispatch(Channel c, MsgType m) throws Exception;
+    public abstract void asyncDispatch(Connection c, MsgType m) throws Exception;
 
     @Override
-    public void dispatch(Channel c, MsgType p) {
+    public void dispatch(Connection c, MsgType p) {
         executor.execute(new AsyncTask(c, p));
     }
 }
