@@ -4,9 +4,7 @@ import com.google.protobuf.BlockingService;
 import com.google.protobuf.Descriptors;
 import com.google.protobuf.Message;
 import com.taobao.teaey.lostrpc.Dispatcher;
-import com.taobao.teaey.lostrpc.common.Connection;
-import com.taobao.teaey.lostrpc.common.CustomDispatcher;
-import com.taobao.teaey.lostrpc.common.LostProto;
+import com.taobao.teaey.lostrpc.common.*;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -21,44 +19,14 @@ public class ServerProtobufDispatcher implements Dispatcher<LostProto.Packet> {
     private final Dispatcher dispatcher0;
 
     /**
-     * 默认是同步分发
      */
-    public ServerProtobufDispatcher() {
-        this(false);
-    }
-
-    /**
-     * @param isAsync true 异步分发  false 同步分发
-     */
-    public ServerProtobufDispatcher(boolean isAsync) {
-        if (isAsync) {
-            dispatcher0 = new CustomDispatcher<LostProto.Packet>(1) {
-                @Override
-                public void customDispatch(Connection c, LostProto.Packet m) throws Exception {
-                    dispatch0(c, m);
-                }
-            };
-        } else {
-            dispatcher0 = new Dispatcher<LostProto.Packet>() {
-                @Override
-                public void dispatch(Connection c, LostProto.Packet m) {
-                    dispatch0(c, m);
-                }
-            };
-        }
-    }
-
-    public ServerProtobufDispatcher(Executor exec) {
-        if (null == exec) {
-            throw new NullPointerException("exec");
-        }
-        dispatcher0 = new CustomDispatcher<LostProto.Packet>(exec) {
+    public ServerProtobufDispatcher(CustomExecutor executor) {
+        this.dispatcher0 = new CustomDispatcher<LostProto.Packet>(executor) {
             @Override
             public void customDispatch(Connection c, LostProto.Packet m) throws Exception {
                 dispatch0(c, m);
             }
         };
-
     }
 
     public void dispatch0(Connection channel, LostProto.Packet p) {

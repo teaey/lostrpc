@@ -18,14 +18,6 @@ public abstract class CustomDispatcher<MsgType> implements Dispatcher<MsgType> {
         this.executor = executor;
     }
 
-    public CustomDispatcher() {
-        this(Runtime.getRuntime().availableProcessors());
-    }
-
-    public CustomDispatcher(int poolSize) {
-        this(poolSize <= 1 ? new SingleThreadExecutor() : new MultiThreadExecutor(poolSize));
-    }
-
     private final Executor executor;
 
     public class CustomTask implements Task {
