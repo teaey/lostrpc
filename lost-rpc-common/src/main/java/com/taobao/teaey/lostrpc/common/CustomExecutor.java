@@ -16,7 +16,7 @@ public abstract class CustomExecutor<T extends Runnable> implements Executor {
     public abstract void exec(T t);
 
 
-    public static class ModulusExecutor extends CustomExecutor<AsyncDispatcher.AsyncTask> {
+    public static class ModulusExecutor extends CustomExecutor<CustomDispatcher.CustomTask> {
         public ModulusExecutor(int threadNum) {
             executors = new Executor[threadNum];
             mask = threadNum;
@@ -34,7 +34,7 @@ public abstract class CustomExecutor<T extends Runnable> implements Executor {
         }
 
         @Override
-        public void exec(AsyncDispatcher.AsyncTask t) {
+        public void exec(CustomDispatcher.CustomTask t) {
             final int id = t.c.getId();
             int idx = id % mask;
             executors[idx].execute(t);

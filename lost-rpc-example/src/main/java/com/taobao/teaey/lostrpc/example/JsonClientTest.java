@@ -3,6 +3,7 @@ package com.taobao.teaey.lostrpc.example;
 import com.alibaba.fastjson.JSON;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.client.NettyClient;
+import com.taobao.teaey.lostrpc.common.Connection;
 import com.taobao.teaey.lostrpc.common.JsonInitializer;
 import io.netty.channel.ChannelFuture;
 
@@ -16,7 +17,7 @@ public class JsonClientTest {
     public static void main(String[] args) {
         NettyClient client = NettyClient.newInstance().dispatcher(new Dispatcher() {
             @Override
-            public void dispatch(Object o, Object p) {
+            public void dispatch(Connection o, Object p) {
                 System.out.println(JSON.toJSONString(p));
             }
         }).initializer(JsonInitializer.newInstance()).connect(new InetSocketAddress(8888)).run();

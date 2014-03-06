@@ -19,6 +19,6 @@ public interface Server<Channel, ReqType, T extends Server> {
 
     T showdownNow();
 
-    T dispatcher(Dispatcher<Channel, ReqType> dispatcher);
+    T dispatcher(Dispatcher<ReqType> dispatcher);
 
 }

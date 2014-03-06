@@ -23,7 +23,7 @@ public class NettyServer<ReqType> implements Server<Channel, ReqType, NettyServe
 
     private NettyChannelInitializer initializer;
 
-    private Dispatcher<Channel, ReqType> dispatcher;
+    private Dispatcher<ReqType> dispatcher;
 
     public static NettyServer newInstance() {
         return new NettyServer();

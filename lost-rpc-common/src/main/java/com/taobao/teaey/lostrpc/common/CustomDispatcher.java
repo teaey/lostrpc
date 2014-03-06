@@ -11,25 +11,25 @@ import java.util.concurrent.Executor;
 /**
  * @author xiaofei.wxf
  */
-public abstract class AsyncDispatcher<MsgType> implements Dispatcher<MsgType> {
-    private static final Logger logger = LoggerFactory.getLogger(AsyncDispatcher.class);
+public abstract class CustomDispatcher<MsgType> implements Dispatcher<MsgType> {
+    private static final Logger logger = LoggerFactory.getLogger(CustomDispatcher.class);
 
-    public AsyncDispatcher() {
-        this(Runtime.getRuntime().availableProcessors());
-    }
-
-    public AsyncDispatcher(Executor executor) {
+    public CustomDispatcher(Executor executor) {
         this.executor = executor;
     }
 
-    public AsyncDispatcher(int poolSize) {
+    public CustomDispatcher() {
+        this(Runtime.getRuntime().availableProcessors());
+    }
+
+    public CustomDispatcher(int poolSize) {
         this(poolSize <= 1 ? new SingleThreadExecutor() : new MultiThreadExecutor(poolSize));
     }
 
     private final Executor executor;
 
-    public class AsyncTask implements Task {
-        AsyncTask(Connection c, MsgType p) {
+    public class CustomTask implements Task {
+        CustomTask(Connection c, MsgType p) {
             this.c = c;
             this.p = p;
         }
@@ -40,17 +40,17 @@ public abstract class AsyncDispatcher<MsgType> implements Dispatcher<MsgType> {
         @Override
         public void run() {
             try {
-                asyncDispatch(c, p);
+                customDispatch(c, p);
             } catch (Exception e) {
                 logger.error("消息处理出错:\n", e);
             }
         }
     }
 
-    public abstract void asyncDispatch(Connection c, MsgType m) throws Exception;
+    public abstract void customDispatch(Connection c, MsgType m) throws Exception;
 
     @Override
     public void dispatch(Connection c, MsgType p) {
-        executor.execute(new AsyncTask(c, p));
+        executor.execute(new CustomTask(c, p));
     }
 }

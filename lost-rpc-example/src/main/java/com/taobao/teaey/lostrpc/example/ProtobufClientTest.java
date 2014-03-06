@@ -4,6 +4,7 @@ import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.TestProto;
 import com.taobao.teaey.lostrpc.client.Client;
 import com.taobao.teaey.lostrpc.client.NettyClient;
+import com.taobao.teaey.lostrpc.common.Connection;
 import com.taobao.teaey.lostrpc.common.LostProto;
 import com.taobao.teaey.lostrpc.common.ProtobufInitializer;
 
@@ -16,7 +17,7 @@ public class ProtobufClientTest {
     public static void main(String[] args) {
         Client client = NettyClient.newInstance().initializer(ProtobufInitializer.newInstance(LostProto.Packet.getDefaultInstance())).dispatcher(new Dispatcher() {
             @Override
-            public void dispatch(Object o, Object p) {
+            public void dispatch(Connection o, Object p) {
                 System.out.println(p);
             }
         }).connect(new InetSocketAddress(8888)).run();

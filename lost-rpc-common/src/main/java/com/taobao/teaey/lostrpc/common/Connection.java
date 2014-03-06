@@ -5,4 +5,5 @@ package com.taobao.teaey.lostrpc.common;
  */
 public interface Connection {
     int getId();
+    void writeAndFlush(Object msg);
 }
