@@ -42,7 +42,7 @@ public abstract class CustomExecutor<T extends Runnable> implements Executor {
     public static class ModulusExecutor extends CustomExecutor<CustomDispatcher.CustomTask> {
         public ModulusExecutor(int threadNum) {
             executors = new Executor[threadNum];
-            mask = threadNum;
+            mask = threadNum - 1;
             initThreads();
         }
 
