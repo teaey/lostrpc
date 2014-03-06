@@ -15,43 +15,71 @@ import java.util.concurrent.Executor;
 /**
  * @author xiaofei.wxf
  */
-public class ServerProtobufDispatcher extends AsyncDispatcher<LostProto.Packet> {
+public class ServerProtobufDispatcher implements Dispatcher<Channel, LostProto.Packet> {
     protected static final Logger logger = LoggerFactory.getLogger(ServerProtobufDispatcher.class);
 
-    private static final Dispatcher dispatcher0 = new AsyncDispatcher<AsyncDispatcher>(){
-        @Override
-        public void onDispatch(Channel channel, AsyncDispatcher m) throws Exception {
+    private final Dispatcher dispatcher0;
 
-        }
-    };
-
+    /**
+     * 默认是同步分发
+     */
     public ServerProtobufDispatcher() {
+        this(false);
     }
 
-    public ServerProtobufDispatcher(int poolSize) {
-        super(poolSize);
-    }
-
-    public ServerProtobufDispatcher(Executor executor) {
-        super(executor);
-    }
-
-    @Override
-    public void onDispatch(Channel channel, LostProto.Packet p) throws Exception {
-        String methodName = p.getMethodName();
-        String serviceName = p.getServiceName();
-        BlockingService service = ProtobufRegisterCenter.getBlockingService(serviceName);
-        if (null == service) {
-            logger.warn("找不到服务:{}", serviceName);
-            return;
+    /**
+     * @param isAsync true 异步分发  false 同步分发
+     */
+    public ServerProtobufDispatcher(boolean isAsync) {
+        if (isAsync) {
+            dispatcher0 = new AsyncDispatcher<Channel, LostProto.Packet>() {
+                @Override
+                public void asyncDispatch(Channel c, LostProto.Packet m) throws Exception {
+                    dispatch0(c, m);
+                }
+            };
+        } else {
+            dispatcher0 = new Dispatcher<Channel, LostProto.Packet>() {
+                @Override
+                public void dispatch(Channel c, LostProto.Packet m) {
+                    dispatch0(c, m);
+                }
+            };
         }
-        Descriptors.MethodDescriptor md = service.getDescriptorForType().findMethodByName(methodName);
-        if (null == md) {
-            logger.warn("找不到方法:{}", serviceName);
-            return;
-        }
+    }
 
-        handleProtobufMsg(channel, p, service, md);
+    public ServerProtobufDispatcher(Executor exec) {
+        if (null == exec) {
+            throw new NullPointerException("exec");
+        }
+        dispatcher0 = new AsyncDispatcher<Channel, LostProto.Packet>(exec) {
+            @Override
+            public void asyncDispatch(Channel c, LostProto.Packet m) throws Exception {
+                dispatch0(c, m);
+            }
+        };
+
+    }
+
+    public void dispatch0(Channel channel, LostProto.Packet p) {
+        try {
+            String methodName = p.getMethodName();
+            String serviceName = p.getServiceName();
+            BlockingService service = ProtobufRegisterCenter.getBlockingService(serviceName);
+            if (null == service) {
+                logger.warn("找不到服务:{}", serviceName);
+                return;
+            }
+            Descriptors.MethodDescriptor md = service.getDescriptorForType().findMethodByName(methodName);
+            if (null == md) {
+                logger.warn("找不到方法:{}", serviceName);
+                return;
+            }
+
+            handleProtobufMsg(channel, p, service, md);
+        } catch (Exception e) {
+            logger.error("请求分发时出错:", e);
+        }
     }
 
     /**
@@ -68,5 +96,10 @@ public class ServerProtobufDispatcher extends AsyncDispatcher<LostProto.Packet> 
     public void handleProtobufMsg(Channel channel, LostProto.Packet p, BlockingService service, Descriptors.MethodDescriptor md) throws Exception {
         Message resp = service.callBlockingMethod(md, null, service.getRequestPrototype(md).getParserForType().parseFrom(p.getData()));
         channel.writeAndFlush(LostProto.Packet.newBuilder(p).setData(resp.toByteString()).build());
+    }
+
+    @Override
+    public void dispatch(Channel c, LostProto.Packet p) {
+        dispatcher0.dispatch(c, p);
     }
 }

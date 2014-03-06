@@ -13,6 +13,6 @@ import com.taobao.teaey.lostrpc.server.protobuf.ServerProtobufDispatcher;
 public class ProtobufServerTest {
     public static void main(String[] args) {
         ProtobufRegisterCenter.addService(TestProto.LoginService.newReflectiveBlockingService(new LoginServiceImpl()));
-        NettyServer.newInstance().dispatcher(new ServerProtobufDispatcher()).initializer(ProtobufInitializer.newInstance(LostProto.Packet.getDefaultInstance())).bind(8888).run();
+        NettyServer.newInstance().dispatcher(new ServerProtobufDispatcher(true)).initializer(ProtobufInitializer.newInstance(LostProto.Packet.getDefaultInstance())).bind(8888).run();
     }
 }
