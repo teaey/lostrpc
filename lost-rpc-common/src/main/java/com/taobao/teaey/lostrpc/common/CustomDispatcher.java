@@ -1,8 +1,6 @@
 package com.taobao.teaey.lostrpc.common;
 
 import com.taobao.teaey.lostrpc.Dispatcher;
-import com.taobao.teaey.lostrpc.concurrent.MultiThreadExecutor;
-import com.taobao.teaey.lostrpc.concurrent.SingleThreadExecutor;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -26,8 +24,13 @@ public abstract class CustomDispatcher<MsgType> implements Dispatcher<MsgType> {
             this.p = p;
         }
 
+
         Connection c;
         MsgType p;
+
+        public Connection getC() {
+            return this.c;
+        }
 
         @Override
         public void run() {
