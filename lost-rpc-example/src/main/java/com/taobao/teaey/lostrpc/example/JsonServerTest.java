@@ -4,6 +4,7 @@ import com.alibaba.fastjson.JSON;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.common.Connection;
 import com.taobao.teaey.lostrpc.common.JsonInitializer;
+import com.taobao.teaey.lostrpc.common.Safety;
 import com.taobao.teaey.lostrpc.server.NettyServer;
 
 /**
@@ -16,6 +17,6 @@ public class JsonServerTest {
             public void dispatch(Connection o, Object p) {
                 System.out.println(JSON.toJSONString(p));
             }
-        }).initializer(JsonInitializer.newInstance()).bind(8888).run();
+        }).initializer(JsonInitializer.newInstance(Safety.NOT_SAFETY_SERVER)).bind(8888).run();
     }
 }

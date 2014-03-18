@@ -1,19 +1,15 @@
 package com.taobao.teaey.lostrpc.common;
 
 import com.google.protobuf.ExtensionRegistry;
+import com.google.protobuf.InvalidProtocolBufferException;
 import com.google.protobuf.MessageLite;
 import com.taobao.teaey.lostrpc.NettyChannelInitializer;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.MessageToByteEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
 import javax.activation.UnsupportedDataTypeException;
-import java.util.List;
 
 /**
  * @author xiaofei.wxf
@@ -22,11 +18,9 @@ public class ProtobufInitializer extends NettyChannelInitializer {
 
     private final static Logger logger = LoggerFactory.getLogger(NettyChannelInitializer.class);
 
-    /**
-     * PROTOCOL BUFFERS *
-     */
-    public static NettyChannelInitializer newInstance(MessageLite prototype, ChannelHandler... handler) {
-        return new ProtobufInitializer(prototype, handler);
+
+    public static NettyChannelInitializer newInstance(Safety safety, MessageLite prototype, ChannelHandler... handler) {
+        return new ProtobufInitializer(safety, prototype, handler);
     }
 
     private static final boolean HAS_PARSER;
@@ -44,10 +38,13 @@ public class ProtobufInitializer extends NettyChannelInitializer {
         HAS_PARSER = hasParser;
     }
 
-    @ChannelHandler.Sharable
-    private class Encoder extends MessageToByteEncoder<Object> {
+    private class Encoder extends PacketFrameEncoder {
+        public Encoder(Safety safety) {
+            super(safety);
+        }
+
         @Override
-        protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
+        public byte[] onMsg(Object msg) throws UnsupportedDataTypeException {
             byte[] body;
             if (msg instanceof MessageLite) {
                 body = ((MessageLite) msg).toByteArray();
@@ -56,15 +53,11 @@ public class ProtobufInitializer extends NettyChannelInitializer {
             } else {
                 throw new UnsupportedDataTypeException(msg.getClass().getName());
             }
-            int bodyLen = body.length;
-            out.ensureWritable(4 + bodyLen);
-            out.writeInt(bodyLen);
-            out.writeBytes(body);
+            return body;
         }
     }
 
-    private class Decoder extends ByteToMessageDecoder {
-
+    private class Decoder extends PacketFrameDecoder {
 
         private final MessageLite prototype;
         private final ExtensionRegistry extensionRegistry;
@@ -72,11 +65,12 @@ public class ProtobufInitializer extends NettyChannelInitializer {
         /**
          * Creates a new instance.
          */
-        public Decoder(MessageLite prototype) {
-            this(prototype, null);
+        public Decoder(Safety safety, MessageLite prototype) {
+            this(safety, prototype, null);
         }
 
-        public Decoder(MessageLite prototype, ExtensionRegistry extensionRegistry) {
+        public Decoder(Safety safety, MessageLite prototype, ExtensionRegistry extensionRegistry) {
+            super(safety);
             if (prototype == null) {
                 throw new NullPointerException("prototype");
             }
@@ -85,53 +79,44 @@ public class ProtobufInitializer extends NettyChannelInitializer {
         }
 
         @Override
-        protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-            if (in.readableBytes() <= 4) return;
-
-            in.markReaderIndex();
-
-            int bodyLen = in.readInt();
-
-            if (in.readableBytes() < bodyLen) {
-                in.resetReaderIndex();
-                return;
-            }
-
-            byte[] body = new byte[bodyLen];
-
-            in.readBytes(body);
-
+        public Object onData(byte[] body) throws InvalidProtocolBufferException {
+            Object ret = null;
             if (extensionRegistry == null) {
                 if (HAS_PARSER) {
-                    out.add(prototype.getParserForType().parseFrom(body));
+                    ret = prototype.getParserForType().parseFrom(body);
                 } else {
-                    out.add(prototype.newBuilderForType().mergeFrom(body).build());
+                    ret = prototype.newBuilderForType().mergeFrom(body).build();
                 }
             } else {
                 if (HAS_PARSER) {
-                    out.add(prototype.getParserForType().parseFrom(body, extensionRegistry));
+                    ret = prototype.getParserForType().parseFrom(body, extensionRegistry);
                 } else {
-                    out.add(prototype.newBuilderForType().mergeFrom(body, extensionRegistry).build());
+                    ret = prototype.newBuilderForType().mergeFrom(body, extensionRegistry).build();
                 }
             }
+            return ret;
         }
     }
 
     private final MessageLite defaultIns;
 
-    private final ChannelHandler encoder = new Encoder();
+    private final ChannelHandler encoder;
 
-    private ProtobufInitializer(MessageLite prototype, ChannelHandler... handlers) {
+    private final Safety safety;
+
+    private ProtobufInitializer(Safety safety, MessageLite prototype, ChannelHandler... handlers) {
         super(handlers);
         if (null == prototype) {
             throw new NullPointerException("prototype");
         }
         this.defaultIns = prototype;
+        this.safety = safety;
+        this.encoder = new Encoder(safety);
     }
 
     @Override
     protected void decoders(Channel ch) throws Exception {
-        ch.pipeline().addLast("decoder", new Decoder(this.defaultIns));
+        ch.pipeline().addLast("decoder", new Decoder(this.safety, this.defaultIns));
     }
 
     @Override

@@ -6,8 +6,6 @@ import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
-import io.netty.handler.codec.ByteToMessageDecoder;
-import io.netty.handler.codec.MessageToByteEncoder;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 
@@ -20,27 +18,25 @@ public class JsonInitializer extends NettyChannelInitializer {
 
     private final static Logger logger = LoggerFactory.getLogger(NettyChannelInitializer.class);
 
-    /**
-     * JSON
-     */
-
-    public static NettyChannelInitializer newInstance(ChannelHandler... handler) {
-        return new JsonInitializer(handler);
+    public static NettyChannelInitializer newInstance(Safety safety, ChannelHandler... handler) {
+        return new JsonInitializer(safety, handler);
     }
 
-    @Sharable
-    private class Encoder extends MessageToByteEncoder<Object> {
+    private class Encoder extends PacketFrameEncoder {
+        public Encoder(Safety safety) {
+            super(safety);
+        }
+
         @Override
-        protected void encode(ChannelHandlerContext ctx, Object msg, ByteBuf out) throws Exception {
-            byte[] body = JsonCodec.INSTANCE.encode(msg);
-            int bodyLen = body.length;
-            out.ensureWritable(4 + bodyLen);
-            out.writeInt(bodyLen);
-            out.writeBytes(body);
+        public byte[] onMsg(Object msg) throws Exception {
+            return JsonCodec.INSTANCE.encode(msg);
         }
     }
 
-    private class Decoder extends ByteToMessageDecoder {
+    private class Decoder extends PacketFrameDecoder {
+        public Decoder(Safety safety) {
+            super(safety);
+        }
 
         @Override
         protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
@@ -61,17 +57,26 @@ public class JsonInitializer extends NettyChannelInitializer {
 
             out.add(JsonCodec.INSTANCE.decode(body));
         }
+
+        @Override
+        public Object onData(byte[] body) throws Exception {
+            return JsonCodec.INSTANCE.decode(body);
+        }
     }
 
-    private final ChannelHandler encoder = new Encoder();
+    private final ChannelHandler encoder;
 
-    private JsonInitializer(ChannelHandler... handlers) {
+    private final Safety safety;
+
+    private JsonInitializer(Safety safety, ChannelHandler... handlers) {
         super(handlers);
+        this.safety = safety;
+        this.encoder = new Encoder(safety);
     }
 
     @Override
     protected void decoders(Channel ch) throws Exception {
-        ch.pipeline().addLast("decoder", new Decoder());
+        ch.pipeline().addLast("decoder", new Decoder(this.safety));
     }
 
     @Override

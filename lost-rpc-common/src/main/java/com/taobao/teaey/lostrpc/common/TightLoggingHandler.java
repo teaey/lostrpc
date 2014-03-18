@@ -126,18 +126,18 @@ public class TightLoggingHandler extends ChannelDuplexHandler {
 
     @Override
     public void channelRead(ChannelHandlerContext ctx, Object msg) throws Exception {
-        ctx.fireChannelRead(msg);
         if (logger.isDebugEnabled()) {
             logMessage(ctx, "RECEIVED", msg);
         }
+        ctx.fireChannelRead(msg);
     }
 
     @Override
     public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
-        ctx.write(msg, promise);
         if (logger.isDebugEnabled()) {
             logMessage(ctx, "WRITE", msg);
         }
+        ctx.write(msg, promise);
     }
 
     @Override

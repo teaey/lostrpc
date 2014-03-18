@@ -14,6 +14,7 @@
         <module>lost-rpc-client</module>
         <module>lost-rpc-all</module>
         <module>lost-rpc-example</module>
+        <module>lost-rpc-safety</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>

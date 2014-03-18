@@ -3,6 +3,8 @@ package com.taobao.teaey.lostrpc.client;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.NettyChannelInitializer;
 import com.taobao.teaey.lostrpc.common.DispatchHandler;
+import com.taobao.teaey.lostrpc.common.Safety;
+import com.taobao.teaey.lostrpc.safety.SafeHandler;
 import io.netty.bootstrap.Bootstrap;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;

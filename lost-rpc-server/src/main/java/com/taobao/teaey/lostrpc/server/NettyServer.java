@@ -4,8 +4,12 @@ package com.taobao.teaey.lostrpc.server;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.NettyChannelInitializer;
 import com.taobao.teaey.lostrpc.common.DispatchHandler;
+import com.taobao.teaey.lostrpc.safety.DefaultServerSafeHandler;
 import io.netty.bootstrap.ServerBootstrap;
-import io.netty.channel.*;
+import io.netty.channel.Channel;
+import io.netty.channel.ChannelFuture;
+import io.netty.channel.ChannelOption;
+import io.netty.channel.EventLoopGroup;
 import io.netty.channel.nio.NioEventLoopGroup;
 import io.netty.channel.socket.nio.NioServerSocketChannel;
 
@@ -32,10 +36,13 @@ public class NettyServer<ReqType> implements Server<Channel, ReqType, NettyServe
     private NettyServer() {
     }
 
+    private DefaultServerSafeHandler safeHandler;
+
     public NettyServer initializer(NettyChannelInitializer initializer) {
         this.initializer = initializer;
-        if (this.dispatcher != null)
+        if (this.dispatcher != null) {
             this.initializer.dispatchHandler(new DispatchHandler(this.dispatcher));
+        }
         return this;
     }
 

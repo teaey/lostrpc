@@ -44,7 +44,6 @@ public abstract class NettyChannelInitializer extends ChannelInitializer {
 
     protected abstract Logger getLogger();
 
-
     public void dispatchHandler(DispatchHandler dispatcher) {
         this.dispatchHandler = dispatcher;
     }

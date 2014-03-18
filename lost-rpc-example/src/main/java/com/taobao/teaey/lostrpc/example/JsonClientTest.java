@@ -5,6 +5,7 @@ import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.client.NettyClient;
 import com.taobao.teaey.lostrpc.common.Connection;
 import com.taobao.teaey.lostrpc.common.JsonInitializer;
+import com.taobao.teaey.lostrpc.common.Safety;
 import io.netty.channel.ChannelFuture;
 
 import java.net.InetSocketAddress;
@@ -20,7 +21,7 @@ public class JsonClientTest {
             public void dispatch(Connection o, Object p) {
                 System.out.println(JSON.toJSONString(p));
             }
-        }).initializer(JsonInitializer.newInstance()).connect(new InetSocketAddress(8888)).run();
+        }).initializer(JsonInitializer.newInstance(Safety.NOT_SAFETY_CLIENT)).connect(new InetSocketAddress(8888)).run();
         while (true) {
             try {
                 ChannelFuture future = client.ask(new Date());
