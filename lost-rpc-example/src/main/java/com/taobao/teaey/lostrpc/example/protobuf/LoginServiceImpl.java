@@ -1,8 +1,7 @@
-package com.taobao.teaey.lostrpc.example;
+package com.taobao.teaey.lostrpc.example.protobuf;
 
 import com.google.protobuf.RpcController;
 import com.google.protobuf.ServiceException;
-import com.taobao.teaey.lostrpc.TestProto;
 
 /**
  * @author xiaofei.wxf

@@ -39,26 +39,6 @@ public class JsonInitializer extends NettyChannelInitializer {
         }
 
         @Override
-        protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-            if (in.readableBytes() <= 4) return;
-
-            in.markReaderIndex();
-
-            int bodyLen = in.readInt();
-
-            if (in.readableBytes() < bodyLen) {
-                in.resetReaderIndex();
-                return;
-            }
-
-            byte[] body = new byte[bodyLen];
-
-            in.readBytes(body);
-
-            out.add(JsonCodec.INSTANCE.decode(body));
-        }
-
-        @Override
         public Object onData(byte[] body) throws Exception {
             return JsonCodec.INSTANCE.decode(body);
         }
