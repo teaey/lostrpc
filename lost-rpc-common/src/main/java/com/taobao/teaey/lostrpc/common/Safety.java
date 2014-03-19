@@ -5,7 +5,7 @@ import com.taobao.teaey.lostrpc.safety.AESEnAndDecryption;
 import com.taobao.teaey.lostrpc.safety.RSAEnAndDecryption;
 
 import java.nio.ByteBuffer;
-import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.concurrent.CountDownLatch;
 
 /**
  * @author xiaofei.wxf
@@ -13,8 +13,11 @@ import java.util.concurrent.atomic.AtomicBoolean;
 public class Safety {
     public static Safety NOT_SAFETY_CLIENT = new Safety(false, false);
     public static Safety NOT_SAFETY_SERVER = new Safety(false, true);
+
     private final boolean isSafety;
-    private final AtomicBoolean authed = new AtomicBoolean(false);
+    private volatile boolean authed = false;
+
+    private final CountDownLatch authedCDL = new CountDownLatch(1);
 
     private byte[] privateRsaKey = new byte[0];
     private byte[] publicRsaKey = new byte[0];
@@ -76,6 +79,12 @@ public class Safety {
         }
     }
 
+    public static class DecryptException extends RuntimeException {
+        public DecryptException(String msg) {
+            super(msg);
+        }
+    }
+
     public static Safety newServerSafety() {
         return new Safety(true, true);
     }
@@ -88,15 +97,27 @@ public class Safety {
 
     private Safety(boolean needSafety, boolean isServer) {
         this.isSafety = needSafety;
+        if (!this.isSafety) {
+            this.authed();
+        }
         this.isServer = isServer;
     }
 
     public boolean isAuthed() {
-        return authed.get();
+        return authed;
     }
 
     public void authed() {
-        authed.compareAndSet(false, true);
+        authed = true;
+        authedCDL.countDown();
+    }
+
+    public void syncAuthed() {
+        try {
+            authedCDL.await();
+        } catch (InterruptedException e) {
+            Thread.currentThread().interrupt();
+        }
     }
 
     public boolean isSafety() {

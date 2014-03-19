@@ -1,11 +1,13 @@
 package com.taobao.teaey.lostrpc.client;
 
+import com.taobao.teaey.lostrpc.Cmd;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.NettyChannelInitializer;
 import com.taobao.teaey.lostrpc.common.DispatchHandler;
 import com.taobao.teaey.lostrpc.common.Safety;
-import com.taobao.teaey.lostrpc.safety.SafeHandler;
 import io.netty.bootstrap.Bootstrap;
+import io.netty.buffer.ByteBuf;
+import io.netty.buffer.Unpooled;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelFuture;
 import io.netty.channel.ChannelOption;
@@ -28,6 +30,8 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
 
     private DispatchHandler<RespType> dispatcherHandler;
 
+    private Safety safety;
+
     private NettyClient() {
     }
 
@@ -37,6 +41,7 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
 
     public NettyClient initializer(NettyChannelInitializer initializer) {
         this.initializer = initializer;
+        this.safety = this.initializer.getSafety();
         if (null != this.dispatcherHandler) {
             this.initializer.dispatchHandler(this.dispatcherHandler);
         }
@@ -87,6 +92,15 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
     @Override
     public ChannelFuture ask(ReqType p) {
         return this.channel.writeAndFlush(p);
+    }
+
+    public NettyClient handshake() {
+        ByteBuf buf = Unpooled.buffer(5);
+        buf.writeInt(0);
+        buf.writeByte(Cmd.CMD_SYNCKEY_REQ.getType());
+        this.channel.writeAndFlush(buf);
+        this.safety.syncAuthed();
+        return this;
     }
 
     protected Bootstrap newBootstrap() {

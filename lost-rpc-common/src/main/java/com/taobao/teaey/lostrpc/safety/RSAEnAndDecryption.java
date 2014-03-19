@@ -1,12 +1,10 @@
 package com.taobao.teaey.lostrpc.safety;
 
-import sun.misc.BASE64Decoder;
+import com.taobao.teaey.lostrpc.common.LostUtils;
 
 import javax.crypto.Cipher;
-import java.io.BufferedReader;
-import java.io.File;
 import java.io.FileInputStream;
-import java.io.InputStreamReader;
+import java.io.InputStream;
 import java.security.KeyFactory;
 import java.security.PrivateKey;
 import java.security.PublicKey;
@@ -45,26 +43,38 @@ public class RSAEnAndDecryption implements EnAndDecryption {
         return publicKey;
     }
 
-    public void loadPubkeyFromFile(String path) throws Exception {
-        File file = new File(path);
-        byte[] keyBytes = processKey(file);
+    public void loadPubkeyFromFile(String pathname) throws Exception {
+        loadPubkeyFromInputStream(new FileInputStream(pathname));
+    }
+
+    public void loadPubkeyFromInputStream(InputStream in) throws Exception {
+        byte[] keyBytes = LostUtils.processKeyStore(in);
         X509EncodedKeySpec x509KeySpec = new X509EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(getAlgorithm());
         PublicKey publicK = keyFactory.generatePublic(x509KeySpec);
         this.publicKey = publicK;
 
-        //this.rsaSignature = Signature.getInstance(RSA_SIGNATURE);
-        //this.rsaSignature.initVerify(publicKey);
     }
 
-    public void loadPrivkeyFromFile(String path) throws Exception {
-        File file = new File(path);
-        byte[] keyBytes = processKey(file);
+    public void loadPrivkeyFromFile(String pathname) throws Exception {
+        loadPrivkeyFromInputStream(new FileInputStream(pathname));
+    }
+
+    public void loadPrivkeyFromInputStream(InputStream in) throws Exception {
+        byte[] keyBytes = LostUtils.processKeyStore(in);
         PKCS8EncodedKeySpec pkcs8 = new PKCS8EncodedKeySpec(keyBytes);
         KeyFactory keyFactory = KeyFactory.getInstance(getAlgorithm());
         PrivateKey publicK = keyFactory.generatePrivate(pkcs8);
         this.privateKey = publicK;
 
+    }
+
+    public void initPubKeyVerify() throws Exception {
+        this.rsaSignature = Signature.getInstance(RSA_SIGNATURE);
+        this.rsaSignature.initVerify(publicKey);
+    }
+
+    public void initPrivKeySign() throws Exception {
         this.rsaSignature = Signature.getInstance(RSA_SIGNATURE);
         this.rsaSignature.initSign(privateKey);
     }
@@ -97,26 +107,6 @@ public class RSAEnAndDecryption implements EnAndDecryption {
         this.privateKey = publicK;
         this.rsaSignature = Signature.getInstance(RSA_SIGNATURE);
         this.rsaSignature.initSign(privateKey);
-    }
-
-    /**
-     * 1 去除key的头跟尾 2 base64 decode
-     *
-     * @param file
-     * @return
-     * @throws Exception
-     */
-    byte[] processKey(File file) throws Exception {
-        BufferedReader in = new BufferedReader(new InputStreamReader(new FileInputStream(file)));
-        StringBuilder sb = new StringBuilder();
-        String line = null;
-        while (((line = in.readLine()) != null)) {
-            if ((line.charAt(0) != '-') && (line.charAt(line.length() - 1) != '-'))
-                sb.append(line);
-        }
-        BASE64Decoder decoder = new BASE64Decoder();
-        byte[] ret = decoder.decodeBuffer(sb.toString());
-        return ret;
     }
 
     @Override

@@ -66,17 +66,14 @@ public class JsonInitializer extends NettyChannelInitializer {
 
     private final ChannelHandler encoder;
 
-    private final Safety safety;
-
     private JsonInitializer(Safety safety, ChannelHandler... handlers) {
-        super(handlers);
-        this.safety = safety;
+        super(safety, handlers);
         this.encoder = new Encoder(safety);
     }
 
     @Override
     protected void decoders(Channel ch) throws Exception {
-        ch.pipeline().addLast("decoder", new Decoder(this.safety));
+        ch.pipeline().addLast("decoder", new Decoder(getSafety()));
     }
 
     @Override

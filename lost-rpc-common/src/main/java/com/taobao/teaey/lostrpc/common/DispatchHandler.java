@@ -6,15 +6,12 @@ import io.netty.channel.ChannelHandlerContext;
 import io.netty.channel.ChannelInboundHandlerAdapter;
 import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
-import org.slf4j.Logger;
-import org.slf4j.LoggerFactory;
 
 /**
  * @author xiaofei.wxf on 14-2-13.
  */
 @ChannelHandler.Sharable
 public class DispatchHandler<Type> extends ChannelInboundHandlerAdapter implements Dispatcher<Type> {
-    private static final Logger logger = LoggerFactory.getLogger(DispatchHandler.class);
     private static final AttributeKey<Connection> ConnKey = AttributeKey.valueOf("ConnKey");
     protected final Dispatcher<Type> dispatcher;
 
@@ -43,7 +40,17 @@ public class DispatchHandler<Type> extends ChannelInboundHandlerAdapter implemen
 
     @Override
     public void exceptionCaught(ChannelHandlerContext ctx, Throwable cause) throws Exception {
-        logger.error("EXCEPTION CAUGHT:\n", cause);
+        Throwable e = cause;
+        while (true) {
+            if (e instanceof Safety.UnauthException || e instanceof Safety.DecryptException) {
+                ctx.close();
+                break;
+            }
+            e = e.getCause();
+            if (null == e) {
+                break;
+            }
+        }
     }
 
     @Override

@@ -15,11 +15,14 @@ import com.taobao.teaey.lostrpc.server.protobuf.ServerProtobufDispatcher;
  */
 public class ProtobufServerTest {
     public static void main(String[] args) throws Exception {
+        //准备Key
         RSAEnAndDecryption rsa = new RSAEnAndDecryption();
-        rsa.loadPrivkeyFromFile("D:\\Workspace\\test-all-in-one\\encryption\\src\\main\\resources\\rsa_pkcs8.pem");
-        rsa.loadPubkeyFromFile("D:\\Workspace\\test-all-in-one\\encryption\\src\\main\\resources\\rsapubkey.pem");
+        rsa.loadPrivkeyFromInputStream(ProtobufServerTest.class.getClassLoader().getResourceAsStream("rsa_priv_pkcs8.pem"));
+        rsa.loadPubkeyFromInputStream(ProtobufServerTest.class.getClassLoader().getResourceAsStream("rsa_pub.pem"));
+        rsa.initPrivKeySign();
         Safety safety = Safety.newServerSafety();
         safety.setRsa(rsa);
+        //启动服务器
         ProtobufRegisterCenter.addService(TestProto.LoginService
                 .newReflectiveBlockingService(new LoginServiceImpl()));
         NettyServer.newInstance()

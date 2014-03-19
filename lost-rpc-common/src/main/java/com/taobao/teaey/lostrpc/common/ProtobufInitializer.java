@@ -102,21 +102,20 @@ public class ProtobufInitializer extends NettyChannelInitializer {
 
     private final ChannelHandler encoder;
 
-    private final Safety safety;
 
     private ProtobufInitializer(Safety safety, MessageLite prototype, ChannelHandler... handlers) {
-        super(handlers);
+        super(safety, handlers);
         if (null == prototype) {
             throw new NullPointerException("prototype");
         }
         this.defaultIns = prototype;
-        this.safety = safety;
         this.encoder = new Encoder(safety);
     }
 
+
     @Override
     protected void decoders(Channel ch) throws Exception {
-        ch.pipeline().addLast("decoder", new Decoder(this.safety, this.defaultIns));
+        ch.pipeline().addLast("decoder", new Decoder(getSafety(), this.defaultIns));
     }
 
     @Override

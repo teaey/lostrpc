@@ -58,7 +58,11 @@ public abstract class PacketFrameDecoder extends ByteToMessageDecoder {
                     throw new Safety.UnauthException("unauth");
                 }
                 if (safety.isSafety()) {
-                    body = safety.getAes().decrypt(body);
+                    try {
+                        body = safety.getAes().decrypt(body);
+                    } catch (Exception e) {
+                        throw new Safety.DecryptException("decript");
+                    }
                 }
                 Object o = onData(body);
                 if (null != o) {
