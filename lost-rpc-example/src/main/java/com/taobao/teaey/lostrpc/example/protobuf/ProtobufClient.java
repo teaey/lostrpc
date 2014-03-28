@@ -35,7 +35,7 @@ public class ProtobufClient {
         for (int i = 0; i < 1; i++) {
             cc = new CountDownLatch(1);
             client.ask(LostProto.Packet.newBuilder().setPId(i).setMethodName("login")
-                .setServiceName("com.taobao.teaey.lostrpc.LoginService")
+                .setServiceName("LoginService")
                 .setTimestamp(System.currentTimeMillis()).setData(
                     TestProto.Login_C2S.newBuilder().setTimestamp(System.currentTimeMillis())
                         .build().toByteString()));

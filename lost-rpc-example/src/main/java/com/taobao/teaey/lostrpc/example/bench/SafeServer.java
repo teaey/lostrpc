@@ -47,7 +47,7 @@ public class SafeServer {
             .newReflectiveBlockingService(new LoginServiceImpl()));
         NettyServer.newInstance()
             .dispatcher(ServiceInvokerDispatcher.newOne(AsyncExecutor.newOne(2),
-                new ProtobufServiceInvoker()))
+                ProtobufServiceInvoker.theOne()))
             .initializer(ProtobufInitializer.newInstance(safety,
                 LostProto.Packet.getDefaultInstance()))
             .bind(8888).run();
@@ -60,7 +60,7 @@ public class SafeServer {
             .newReflectiveBlockingService(new LoginServiceImpl()));
         NettyServer.newInstance()
             .dispatcher(ServiceInvokerDispatcher
-                .newOne(AsyncExecutor.newOne(2), new ProtobufServiceInvoker()))
+                .newOne(AsyncExecutor.newOne(2), ProtobufServiceInvoker.theOne()))
             .initializer(ProtobufInitializer.newInstance(Safety.NOT_SAFETY_SERVER,
                 LostProto.Packet.getDefaultInstance()))
             .bind(8888).run();

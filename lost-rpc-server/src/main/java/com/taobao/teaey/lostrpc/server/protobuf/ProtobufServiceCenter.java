@@ -57,11 +57,11 @@ public class ProtobufServiceCenter implements ServiceCenter {
         }
         if (service instanceof Service) {
             SERVICE_CACHE
-                .put(((Service) service).getDescriptorForType().getFullName(), (Service) service);
+                .put(((Service) service).getDescriptorForType().getName(), (Service) service);
         }
         if (service instanceof BlockingService) {
             BLOCKING_SERVICE_CACHE
-                .put(((BlockingService) service).getDescriptorForType().getFullName(),
+                .put(((BlockingService) service).getDescriptorForType().getName(),
                     (BlockingService) service);
         }
         return true;
