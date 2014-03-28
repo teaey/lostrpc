@@ -12,6 +12,17 @@ import com.taobao.teaey.lostrpc.server.ServiceInvoker;
  * @author xiaofei.wxf
  */
 public class ProtobufServiceInvoker implements ServiceInvoker {
+    private ProtobufServiceInvoker() {
+    }
+
+    private static class Holder {
+        static final ProtobufServiceInvoker i = new ProtobufServiceInvoker();
+    }
+
+    public static ProtobufServiceInvoker theOne() {
+        return Holder.i;
+    }
+
     @Override
     public Object handle(RpcSession session, Object packet) {
         try {
@@ -19,7 +30,7 @@ public class ProtobufServiceInvoker implements ServiceInvoker {
             String methodName = p.getMethodName();
             String serviceName = p.getServiceName();
             BlockingService service =
-                (BlockingService) ProtobufServiceCenter.getInstance().get(serviceName);
+                (BlockingService) ProtobufServiceCenter.theOne().get(serviceName);
             if (null == service) {
                 throw new RuntimeException("找不到服务 " + serviceName);
             }

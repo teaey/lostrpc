@@ -14,7 +14,7 @@ public class SessionCenter {
         private static final SessionCenter i = new SessionCenter();
     }
 
-    public static SessionCenter getInstance() {
+    public static SessionCenter theOne() {
         return Holder.i;
     }
 

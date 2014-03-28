@@ -17,11 +17,11 @@ public class ProtobufServer {
     @Test
     public void simpleServer() throws Exception {
         //启动服务器
-        ProtobufServiceCenter.getInstance().add(TestProto.LoginService
+        ProtobufServiceCenter.theOne().add(TestProto.LoginService
             .newReflectiveBlockingService(new LoginServiceImpl()));
         NettyServer.newInstance()
             .dispatcher(ServiceInvokerDispatcher
-                .newOne(AsyncExecutor.newOne(2), new ProtobufServiceInvoker()))
+                .newOne(AsyncExecutor.newOne(2), ProtobufServiceInvoker.theOne()))
             .initializer(ProtobufInitializer.newInstance(Safety.NOT_SAFETY_SERVER,
                 LostProto.Packet.getDefaultInstance()))
             .bind(8881).run();

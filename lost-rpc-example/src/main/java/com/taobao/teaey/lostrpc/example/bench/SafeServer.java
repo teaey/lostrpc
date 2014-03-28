@@ -43,7 +43,7 @@ public class SafeServer {
         Safety safety = Safety.newServerSafety();
         safety.setRsa(rsa);
         //启动服务器
-        ProtobufServiceCenter.getInstance().add(TestProto.LoginService
+        ProtobufServiceCenter.theOne().add(TestProto.LoginService
             .newReflectiveBlockingService(new LoginServiceImpl()));
         NettyServer.newInstance()
             .dispatcher(ServiceInvokerDispatcher.newOne(AsyncExecutor.newOne(2),
@@ -56,7 +56,7 @@ public class SafeServer {
     @Test
     public void nosafetyServer() throws Exception {
         //启动服务器
-        ProtobufServiceCenter.getInstance().add(TestProto.LoginService
+        ProtobufServiceCenter.theOne().add(TestProto.LoginService
             .newReflectiveBlockingService(new LoginServiceImpl()));
         NettyServer.newInstance()
             .dispatcher(ServiceInvokerDispatcher

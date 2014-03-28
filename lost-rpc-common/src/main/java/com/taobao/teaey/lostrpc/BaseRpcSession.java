@@ -16,10 +16,10 @@ public class BaseRpcSession implements RpcSession {
     }
 
     public static RpcSession getOne(Connection c) {
-        RpcSession s = SessionCenter.getInstance().get(c.getId());
+        RpcSession s = SessionCenter.theOne().get(c.getId());
         if (null == s) {
             s = new BaseRpcSession(c);
-            RpcSession tmp = SessionCenter.getInstance().put(s);
+            RpcSession tmp = SessionCenter.theOne().put(s);
             if (null != tmp) {
                 s = tmp;
             }

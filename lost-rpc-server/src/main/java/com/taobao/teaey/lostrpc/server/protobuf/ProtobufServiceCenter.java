@@ -23,7 +23,7 @@ public class ProtobufServiceCenter implements ServiceCenter {
         static final ProtobufServiceCenter i = new ProtobufServiceCenter();
     }
 
-    public static ProtobufServiceCenter getInstance() {
+    public static ProtobufServiceCenter theOne() {
         return Holder.i;
     }
     /*public void addService(Object service) {
