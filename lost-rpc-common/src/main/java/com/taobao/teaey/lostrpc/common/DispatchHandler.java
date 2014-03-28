@@ -1,5 +1,6 @@
 package com.taobao.teaey.lostrpc.common;
 
+import com.taobao.teaey.lostrpc.Connection;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import io.netty.channel.ChannelHandler;
 import io.netty.channel.ChannelHandlerContext;
@@ -8,10 +9,15 @@ import io.netty.util.Attribute;
 import io.netty.util.AttributeKey;
 
 /**
+ * 先看下整个消息处理层级:
+ *
  * @author xiaofei.wxf on 14-2-13.
+ * @see com.taobao.teaey.lostrpc.common.Readme
+ * DispatchHandler是网络层与消息分发层的桥梁
  */
 @ChannelHandler.Sharable
-public class DispatchHandler<Type> extends ChannelInboundHandlerAdapter implements Dispatcher<Type> {
+public class DispatchHandler<Type> extends ChannelInboundHandlerAdapter
+    implements Dispatcher<Type> {
     private static final AttributeKey<Connection> ConnKey = AttributeKey.valueOf("ConnKey");
     protected final Dispatcher<Type> dispatcher;
 
@@ -53,8 +59,7 @@ public class DispatchHandler<Type> extends ChannelInboundHandlerAdapter implemen
         }
     }
 
-    @Override
-    public void dispatch(Connection channel, Type p) {
-        this.dispatcher.dispatch(channel, p);
+    @Override public void dispatch(Connection c, Type p) {
+        this.dispatcher.dispatch(c, p);
     }
 }

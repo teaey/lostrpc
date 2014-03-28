@@ -20,7 +20,8 @@ public abstract class PacketFrameEncoder extends MessageToByteEncoder<Object> {
     }
 
     @Override
-    protected void encode(ChannelHandlerContext ctx, java.lang.Object msg, ByteBuf out) throws Exception {
+    protected void encode(ChannelHandlerContext ctx, java.lang.Object msg, ByteBuf out)
+        throws Exception {
         if (msg instanceof ByteBuf) {
             out.writeBytes((ByteBuf) msg);
         } else if (msg instanceof byte[]) {

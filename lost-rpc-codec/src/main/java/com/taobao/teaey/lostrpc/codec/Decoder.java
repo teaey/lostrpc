@@ -2,6 +2,7 @@ package com.taobao.teaey.lostrpc.codec;
 
 /**
  * Decoder Interface
+ *
  * @author xiaofei.wxf email:masfay@163.com
  */
 public interface Decoder {

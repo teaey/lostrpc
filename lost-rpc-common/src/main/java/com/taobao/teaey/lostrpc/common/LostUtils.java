@@ -12,13 +12,16 @@ import java.io.InputStreamReader;
  */
 public class LostUtils {
     public static byte[] processKeyStore(InputStream is) throws IOException {
-        if (null == is) throw new NullPointerException("input stream");
+        if (null == is) {
+            throw new NullPointerException("input stream");
+        }
         BufferedReader in = new BufferedReader(new InputStreamReader(is));
         StringBuilder sb = new StringBuilder();
         String line = null;
         while (((line = in.readLine()) != null)) {
-            if ((line.charAt(0) != '-') && (line.charAt(line.length() - 1) != '-'))
+            if ((line.charAt(0) != '-') && (line.charAt(line.length() - 1) != '-')) {
                 sb.append(line);
+            }
         }
         BASE64Decoder decoder = new BASE64Decoder();
         return decoder.decodeBuffer(sb.toString());

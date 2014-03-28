@@ -79,6 +79,7 @@ public class Safety {
         }
     }
 
+
     public static class DecryptException extends RuntimeException {
         public DecryptException(String msg) {
             super(msg);

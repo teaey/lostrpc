@@ -2,14 +2,10 @@ package com.taobao.teaey.lostrpc.common;
 
 import com.taobao.teaey.lostrpc.NettyChannelInitializer;
 import com.taobao.teaey.lostrpc.codec.JsonCodec;
-import io.netty.buffer.ByteBuf;
 import io.netty.channel.Channel;
 import io.netty.channel.ChannelHandler;
-import io.netty.channel.ChannelHandlerContext;
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
-
-import java.util.List;
 
 /**
  * @author xiaofei.wxf
@@ -33,6 +29,7 @@ public class JsonInitializer extends NettyChannelInitializer {
         }
     }
 
+
     private class Decoder extends PacketFrameDecoder {
         public Decoder(Safety safety) {
             super(safety);
@@ -43,6 +40,7 @@ public class JsonInitializer extends NettyChannelInitializer {
             return JsonCodec.INSTANCE.decode(body);
         }
     }
+
 
     private final ChannelHandler encoder;
 

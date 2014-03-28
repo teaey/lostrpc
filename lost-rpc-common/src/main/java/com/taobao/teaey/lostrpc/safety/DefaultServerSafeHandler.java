@@ -11,7 +11,8 @@ import java.util.concurrent.atomic.AtomicBoolean;
  * @author xiaofei.wxf
  */
 public class DefaultServerSafeHandler extends ChannelInboundHandlerAdapter {
-    private static final AttributeKey<AtomicBoolean> AUTHED = AttributeKey.valueOf("SafeHandler-AUTHED");
+    private static final AttributeKey<AtomicBoolean> AUTHED =
+        AttributeKey.valueOf("SafeHandler-AUTHED");
 
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {

@@ -1,8 +1,8 @@
 package com.taobao.teaey.lostrpc.example.json;
 
 import com.alibaba.fastjson.JSON;
+import com.taobao.teaey.lostrpc.Connection;
 import com.taobao.teaey.lostrpc.Dispatcher;
-import com.taobao.teaey.lostrpc.common.Connection;
 import com.taobao.teaey.lostrpc.common.JsonInitializer;
 import com.taobao.teaey.lostrpc.common.Safety;
 import com.taobao.teaey.lostrpc.server.NettyServer;

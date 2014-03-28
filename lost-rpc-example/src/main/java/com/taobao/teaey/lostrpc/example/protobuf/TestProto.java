@@ -6,1335 +6,1465 @@ package com.taobao.teaey.lostrpc.example.protobuf;
 import com.google.protobuf.AbstractMessage;
 
 public final class TestProto {
-  private TestProto() {}
-  public static void registerAllExtensions(
-      com.google.protobuf.ExtensionRegistry registry) {
-  }
-  public interface Login_C2SOrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required int64 timestamp = 1;
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    boolean hasTimestamp();
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    long getTimestamp();
-  }
-  /**
-   * Protobuf type {@code com.taobao.teaey.lostrpc.Login_C2S}
-   */
-  public static final class Login_C2S extends
-      com.google.protobuf.GeneratedMessage
-      implements Login_C2SOrBuilder {
-    // Use Login_C2S.newBuilder() to construct.
-    private Login_C2S(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private Login_C2S(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Login_C2S defaultInstance;
-    public static Login_C2S getDefaultInstance() {
-      return defaultInstance;
+    private TestProto() {
     }
 
-    public Login_C2S getDefaultInstanceForType() {
-      return defaultInstance;
+    public static void registerAllExtensions(
+        com.google.protobuf.ExtensionRegistry registry) {
     }
 
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
-        getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Login_C2S(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              timestamp_ = input.readInt64();
-              break;
-            }
-          }
-        }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
-        getDescriptor() {
-      return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
+    public interface Login_C2SOrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
+
+        // required int64 timestamp = 1;
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        boolean hasTimestamp();
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        long getTimestamp();
     }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-        internalGetFieldAccessorTable() {
-      return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              TestProto.Login_C2S.class, TestProto.Login_C2S.Builder.class);
-    }
 
-    public static com.google.protobuf.Parser<Login_C2S> PARSER =
-        new com.google.protobuf.AbstractParser<Login_C2S>() {
-      public Login_C2S parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Login_C2S(input, extensionRegistry);
-      }
-    };
-
-    @java.lang.Override
-    public com.google.protobuf.Parser<Login_C2S> getParserForType() {
-      return PARSER;
-    }
-
-    private int bitField0_;
-    // required int64 timestamp = 1;
-    public static final int TIMESTAMP_FIELD_NUMBER = 1;
-    private long timestamp_;
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    public boolean hasTimestamp() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    public long getTimestamp() {
-      return timestamp_;
-    }
-
-    private void initFields() {
-      timestamp_ = 0L;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
-
-      if (!hasTimestamp()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, timestamp_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, timestamp_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static TestProto.Login_C2S parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static TestProto.Login_C2S parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static TestProto.Login_C2S parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static TestProto.Login_C2S parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static TestProto.Login_C2S parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static TestProto.Login_C2S parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static TestProto.Login_C2S parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static TestProto.Login_C2S parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static TestProto.Login_C2S parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static TestProto.Login_C2S parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(TestProto.Login_C2S prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code com.taobao.teaey.lostrpc.Login_C2S}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements TestProto.Login_C2SOrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                TestProto.Login_C2S.class, TestProto.Login_C2S.Builder.class);
-      }
-
-      // Construct using com.taobao.teaey.lostrpc.example.protobuf.TestProto.Login_C2S.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+    public static final class Login_C2S extends
+        com.google.protobuf.GeneratedMessage
+        implements Login_C2SOrBuilder {
+        // Use Login_C2S.newBuilder() to construct.
+        private Login_C2S(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        timestamp_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
-      }
-
-      public TestProto.Login_C2S getDefaultInstanceForType() {
-        return TestProto.Login_C2S.getDefaultInstance();
-      }
-
-      public TestProto.Login_C2S build() {
-        TestProto.Login_C2S result = buildPartial();
-        if (!result.isInitialized()) {
-          throw AbstractMessage.Builder.newUninitializedMessageException(result);
+        private Login_C2S(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
-        return result;
-      }
 
-      public TestProto.Login_C2S buildPartial() {
-        TestProto.Login_C2S result = new TestProto.Login_C2S(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        private static final Login_C2S defaultInstance;
+
+        public static Login_C2S getDefaultInstance() {
+            return defaultInstance;
         }
-        result.timestamp_ = timestamp_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof TestProto.Login_C2S) {
-          return mergeFrom((TestProto.Login_C2S)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        public Login_C2S getDefaultInstanceForType() {
+            return defaultInstance;
         }
-      }
 
-      public Builder mergeFrom(TestProto.Login_C2S other) {
-        if (other == TestProto.Login_C2S.getDefaultInstance()) return this;
-        if (other.hasTimestamp()) {
-          setTimestamp(other.getTimestamp());
-        }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
 
-      public final boolean isInitialized() {
-        if (!hasTimestamp()) {
-          
-          return false;
-        }
-        return true;
-      }
-
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        TestProto.Login_C2S parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (TestProto.Login_C2S) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
-        }
-        return this;
-      }
-      private int bitField0_;
-
-      // required int64 timestamp = 1;
-      private long timestamp_ ;
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public boolean hasTimestamp() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public long getTimestamp() {
-        return timestamp_;
-      }
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public Builder setTimestamp(long value) {
-        bitField0_ |= 0x00000001;
-        timestamp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public Builder clearTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        timestamp_ = 0L;
-        onChanged();
-        return this;
-      }
-
-      // @@protoc_insertion_point(builder_scope:com.taobao.teaey.lostrpc.Login_C2S)
-    }
-
-    static {
-      defaultInstance = new Login_C2S(true);
-      defaultInstance.initFields();
-    }
-
-    // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.Login_C2S)
-  }
-
-  public interface Login_S2COrBuilder
-      extends com.google.protobuf.MessageOrBuilder {
-
-    // required int64 timestamp = 1;
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    boolean hasTimestamp();
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    long getTimestamp();
-  }
-  /**
-   * Protobuf type {@code com.taobao.teaey.lostrpc.Login_S2C}
-   */
-  public static final class Login_S2C extends
-      com.google.protobuf.GeneratedMessage
-      implements Login_S2COrBuilder {
-    // Use Login_S2C.newBuilder() to construct.
-    private Login_S2C(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
-      super(builder);
-      this.unknownFields = builder.getUnknownFields();
-    }
-    private Login_S2C(boolean noInit) { this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance(); }
-
-    private static final Login_S2C defaultInstance;
-    public static Login_S2C getDefaultInstance() {
-      return defaultInstance;
-    }
-
-    public Login_S2C getDefaultInstanceForType() {
-      return defaultInstance;
-    }
-
-    private final com.google.protobuf.UnknownFieldSet unknownFields;
-    @java.lang.Override
-    public final com.google.protobuf.UnknownFieldSet
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
         getUnknownFields() {
-      return this.unknownFields;
-    }
-    private Login_S2C(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      initFields();
-      int mutable_bitField0_ = 0;
-      com.google.protobuf.UnknownFieldSet.Builder unknownFields =
-          com.google.protobuf.UnknownFieldSet.newBuilder();
-      try {
-        boolean done = false;
-        while (!done) {
-          int tag = input.readTag();
-          switch (tag) {
-            case 0:
-              done = true;
-              break;
-            default: {
-              if (!parseUnknownField(input, unknownFields,
-                                     extensionRegistry, tag)) {
-                done = true;
-              }
-              break;
-            }
-            case 8: {
-              bitField0_ |= 0x00000001;
-              timestamp_ = input.readInt64();
-              break;
-            }
-          }
+            return this.unknownFields;
         }
-      } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-        throw e.setUnfinishedMessage(this);
-      } catch (java.io.IOException e) {
-        throw new com.google.protobuf.InvalidProtocolBufferException(
-            e.getMessage()).setUnfinishedMessage(this);
-      } finally {
-        this.unknownFields = unknownFields.build();
-        makeExtensionsImmutable();
-      }
-    }
-    public static final com.google.protobuf.Descriptors.Descriptor
+
+        private Login_C2S(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            timestamp_ = input.readInt64();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
+        }
+
+        public static final com.google.protobuf.Descriptors.Descriptor
         getDescriptor() {
-      return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
-    }
+            return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
+        }
 
-    protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
         internalGetFieldAccessorTable() {
-      return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable
-          .ensureFieldAccessorsInitialized(
-              TestProto.Login_S2C.class, TestProto.Login_S2C.Builder.class);
+            return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    TestProto.Login_C2S.class, TestProto.Login_C2S.Builder.class);
+        }
+
+        public static com.google.protobuf.Parser<Login_C2S> PARSER =
+            new com.google.protobuf.AbstractParser<Login_C2S>() {
+                public Login_C2S parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                    return new Login_C2S(input, extensionRegistry);
+                }
+            };
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Login_C2S> getParserForType() {
+            return PARSER;
+        }
+
+        private int bitField0_;
+        // required int64 timestamp = 1;
+        public static final int TIMESTAMP_FIELD_NUMBER = 1;
+        private long timestamp_;
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        public boolean hasTimestamp() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        public long getTimestamp() {
+            return timestamp_;
+        }
+
+        private void initFields() {
+            timestamp_ = 0L;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) {
+                return isInitialized == 1;
+            }
+
+            if (!hasTimestamp()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeInt64(1, timestamp_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) {
+                return size;
+            }
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                    .computeInt64Size(1, timestamp_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+            throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static TestProto.Login_C2S parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static TestProto.Login_C2S parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static TestProto.Login_C2S parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static TestProto.Login_C2S parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static TestProto.Login_C2S parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static TestProto.Login_C2S parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static TestProto.Login_C2S parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static TestProto.Login_C2S parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static TestProto.Login_C2S parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static TestProto.Login_C2S parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(TestProto.Login_C2S prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code com.taobao.teaey.lostrpc.Login_C2S}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessage.Builder<Builder>
+            implements TestProto.Login_C2SOrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                        TestProto.Login_C2S.class, TestProto.Login_C2S.Builder.class);
+            }
+
+            // Construct using com.taobao.teaey.lostrpc.example.protobuf.TestProto.Login_C2S.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                timestamp_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
+            }
+
+            public TestProto.Login_C2S getDefaultInstanceForType() {
+                return TestProto.Login_C2S.getDefaultInstance();
+            }
+
+            public TestProto.Login_C2S build() {
+                TestProto.Login_C2S result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw AbstractMessage.Builder.newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public TestProto.Login_C2S buildPartial() {
+                TestProto.Login_C2S result = new TestProto.Login_C2S(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.timestamp_ = timestamp_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof TestProto.Login_C2S) {
+                    return mergeFrom((TestProto.Login_C2S) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(TestProto.Login_C2S other) {
+                if (other == TestProto.Login_C2S.getDefaultInstance()) {
+                    return this;
+                }
+                if (other.hasTimestamp()) {
+                    setTimestamp(other.getTimestamp());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasTimestamp()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+                TestProto.Login_C2S parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (TestProto.Login_C2S) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required int64 timestamp = 1;
+            private long timestamp_;
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public boolean hasTimestamp() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public long getTimestamp() {
+                return timestamp_;
+            }
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public Builder setTimestamp(long value) {
+                bitField0_ |= 0x00000001;
+                timestamp_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public Builder clearTimestamp() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                timestamp_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:com.taobao.teaey.lostrpc.Login_C2S)
+        }
+
+
+        static {
+            defaultInstance = new Login_C2S(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.Login_C2S)
     }
 
-    public static com.google.protobuf.Parser<Login_S2C> PARSER =
-        new com.google.protobuf.AbstractParser<Login_S2C>() {
-      public Login_S2C parsePartialFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws com.google.protobuf.InvalidProtocolBufferException {
-        return new Login_S2C(input, extensionRegistry);
-      }
-    };
 
-    @java.lang.Override
-    public com.google.protobuf.Parser<Login_S2C> getParserForType() {
-      return PARSER;
-    }
+    public interface Login_S2COrBuilder
+        extends com.google.protobuf.MessageOrBuilder {
 
-    private int bitField0_;
-    // required int64 timestamp = 1;
-    public static final int TIMESTAMP_FIELD_NUMBER = 1;
-    private long timestamp_;
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    public boolean hasTimestamp() {
-      return ((bitField0_ & 0x00000001) == 0x00000001);
-    }
-    /**
-     * <code>required int64 timestamp = 1;</code>
-     */
-    public long getTimestamp() {
-      return timestamp_;
+        // required int64 timestamp = 1;
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        boolean hasTimestamp();
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        long getTimestamp();
     }
 
-    private void initFields() {
-      timestamp_ = 0L;
-    }
-    private byte memoizedIsInitialized = -1;
-    public final boolean isInitialized() {
-      byte isInitialized = memoizedIsInitialized;
-      if (isInitialized != -1) return isInitialized == 1;
 
-      if (!hasTimestamp()) {
-        memoizedIsInitialized = 0;
-        return false;
-      }
-      memoizedIsInitialized = 1;
-      return true;
-    }
-
-    public void writeTo(com.google.protobuf.CodedOutputStream output)
-                        throws java.io.IOException {
-      getSerializedSize();
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        output.writeInt64(1, timestamp_);
-      }
-      getUnknownFields().writeTo(output);
-    }
-
-    private int memoizedSerializedSize = -1;
-    public int getSerializedSize() {
-      int size = memoizedSerializedSize;
-      if (size != -1) return size;
-
-      size = 0;
-      if (((bitField0_ & 0x00000001) == 0x00000001)) {
-        size += com.google.protobuf.CodedOutputStream
-          .computeInt64Size(1, timestamp_);
-      }
-      size += getUnknownFields().getSerializedSize();
-      memoizedSerializedSize = size;
-      return size;
-    }
-
-    private static final long serialVersionUID = 0L;
-    @java.lang.Override
-    protected java.lang.Object writeReplace()
-        throws java.io.ObjectStreamException {
-      return super.writeReplace();
-    }
-
-    public static TestProto.Login_S2C parseFrom(
-        com.google.protobuf.ByteString data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static TestProto.Login_S2C parseFrom(
-        com.google.protobuf.ByteString data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static TestProto.Login_S2C parseFrom(byte[] data)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data);
-    }
-    public static TestProto.Login_S2C parseFrom(
-        byte[] data,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws com.google.protobuf.InvalidProtocolBufferException {
-      return PARSER.parseFrom(data, extensionRegistry);
-    }
-    public static TestProto.Login_S2C parseFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static TestProto.Login_S2C parseFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-    public static TestProto.Login_S2C parseDelimitedFrom(java.io.InputStream input)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input);
-    }
-    public static TestProto.Login_S2C parseDelimitedFrom(
-        java.io.InputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseDelimitedFrom(input, extensionRegistry);
-    }
-    public static TestProto.Login_S2C parseFrom(
-        com.google.protobuf.CodedInputStream input)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input);
-    }
-    public static TestProto.Login_S2C parseFrom(
-        com.google.protobuf.CodedInputStream input,
-        com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-        throws java.io.IOException {
-      return PARSER.parseFrom(input, extensionRegistry);
-    }
-
-    public static Builder newBuilder() { return Builder.create(); }
-    public Builder newBuilderForType() { return newBuilder(); }
-    public static Builder newBuilder(TestProto.Login_S2C prototype) {
-      return newBuilder().mergeFrom(prototype);
-    }
-    public Builder toBuilder() { return newBuilder(this); }
-
-    @java.lang.Override
-    protected Builder newBuilderForType(
-        com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-      Builder builder = new Builder(parent);
-      return builder;
-    }
     /**
      * Protobuf type {@code com.taobao.teaey.lostrpc.Login_S2C}
      */
-    public static final class Builder extends
-        com.google.protobuf.GeneratedMessage.Builder<Builder>
-       implements TestProto.Login_S2COrBuilder {
-      public static final com.google.protobuf.Descriptors.Descriptor
-          getDescriptor() {
-        return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
-      }
-
-      protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
-          internalGetFieldAccessorTable() {
-        return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable
-            .ensureFieldAccessorsInitialized(
-                TestProto.Login_S2C.class, TestProto.Login_S2C.Builder.class);
-      }
-
-      // Construct using com.taobao.teaey.lostrpc.example.protobuf.TestProto.Login_S2C.newBuilder()
-      private Builder() {
-        maybeForceBuilderInitialization();
-      }
-
-      private Builder(
-          com.google.protobuf.GeneratedMessage.BuilderParent parent) {
-        super(parent);
-        maybeForceBuilderInitialization();
-      }
-      private void maybeForceBuilderInitialization() {
-        if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+    public static final class Login_S2C extends
+        com.google.protobuf.GeneratedMessage
+        implements Login_S2COrBuilder {
+        // Use Login_S2C.newBuilder() to construct.
+        private Login_S2C(com.google.protobuf.GeneratedMessage.Builder<?> builder) {
+            super(builder);
+            this.unknownFields = builder.getUnknownFields();
         }
-      }
-      private static Builder create() {
-        return new Builder();
-      }
 
-      public Builder clear() {
-        super.clear();
-        timestamp_ = 0L;
-        bitField0_ = (bitField0_ & ~0x00000001);
-        return this;
-      }
-
-      public Builder clone() {
-        return create().mergeFrom(buildPartial());
-      }
-
-      public com.google.protobuf.Descriptors.Descriptor
-          getDescriptorForType() {
-        return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
-      }
-
-      public TestProto.Login_S2C getDefaultInstanceForType() {
-        return TestProto.Login_S2C.getDefaultInstance();
-      }
-
-      public TestProto.Login_S2C build() {
-        TestProto.Login_S2C result = buildPartial();
-        if (!result.isInitialized()) {
-          throw AbstractMessage.Builder.newUninitializedMessageException(result);
+        private Login_S2C(boolean noInit) {
+            this.unknownFields = com.google.protobuf.UnknownFieldSet.getDefaultInstance();
         }
-        return result;
-      }
 
-      public TestProto.Login_S2C buildPartial() {
-        TestProto.Login_S2C result = new TestProto.Login_S2C(this);
-        int from_bitField0_ = bitField0_;
-        int to_bitField0_ = 0;
-        if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
-          to_bitField0_ |= 0x00000001;
+        private static final Login_S2C defaultInstance;
+
+        public static Login_S2C getDefaultInstance() {
+            return defaultInstance;
         }
-        result.timestamp_ = timestamp_;
-        result.bitField0_ = to_bitField0_;
-        onBuilt();
-        return result;
-      }
 
-      public Builder mergeFrom(com.google.protobuf.Message other) {
-        if (other instanceof TestProto.Login_S2C) {
-          return mergeFrom((TestProto.Login_S2C)other);
-        } else {
-          super.mergeFrom(other);
-          return this;
+        public Login_S2C getDefaultInstanceForType() {
+            return defaultInstance;
         }
-      }
 
-      public Builder mergeFrom(TestProto.Login_S2C other) {
-        if (other == TestProto.Login_S2C.getDefaultInstance()) return this;
-        if (other.hasTimestamp()) {
-          setTimestamp(other.getTimestamp());
+        private final com.google.protobuf.UnknownFieldSet unknownFields;
+
+        @java.lang.Override
+        public final com.google.protobuf.UnknownFieldSet
+        getUnknownFields() {
+            return this.unknownFields;
         }
-        this.mergeUnknownFields(other.getUnknownFields());
-        return this;
-      }
 
-      public final boolean isInitialized() {
-        if (!hasTimestamp()) {
-          
-          return false;
+        private Login_S2C(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            initFields();
+            int mutable_bitField0_ = 0;
+            com.google.protobuf.UnknownFieldSet.Builder unknownFields =
+                com.google.protobuf.UnknownFieldSet.newBuilder();
+            try {
+                boolean done = false;
+                while (!done) {
+                    int tag = input.readTag();
+                    switch (tag) {
+                        case 0:
+                            done = true;
+                            break;
+                        default: {
+                            if (!parseUnknownField(input, unknownFields,
+                                extensionRegistry, tag)) {
+                                done = true;
+                            }
+                            break;
+                        }
+                        case 8: {
+                            bitField0_ |= 0x00000001;
+                            timestamp_ = input.readInt64();
+                            break;
+                        }
+                    }
+                }
+            } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                throw e.setUnfinishedMessage(this);
+            } catch (java.io.IOException e) {
+                throw new com.google.protobuf.InvalidProtocolBufferException(
+                    e.getMessage()).setUnfinishedMessage(this);
+            } finally {
+                this.unknownFields = unknownFields.build();
+                makeExtensionsImmutable();
+            }
         }
-        return true;
-      }
 
-      public Builder mergeFrom(
-          com.google.protobuf.CodedInputStream input,
-          com.google.protobuf.ExtensionRegistryLite extensionRegistry)
-          throws java.io.IOException {
-        TestProto.Login_S2C parsedMessage = null;
-        try {
-          parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
-        } catch (com.google.protobuf.InvalidProtocolBufferException e) {
-          parsedMessage = (TestProto.Login_S2C) e.getUnfinishedMessage();
-          throw e;
-        } finally {
-          if (parsedMessage != null) {
-            mergeFrom(parsedMessage);
-          }
+        public static final com.google.protobuf.Descriptors.Descriptor
+        getDescriptor() {
+            return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
         }
-        return this;
-      }
-      private int bitField0_;
 
-      // required int64 timestamp = 1;
-      private long timestamp_ ;
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public boolean hasTimestamp() {
-        return ((bitField0_ & 0x00000001) == 0x00000001);
-      }
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public long getTimestamp() {
-        return timestamp_;
-      }
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public Builder setTimestamp(long value) {
-        bitField0_ |= 0x00000001;
-        timestamp_ = value;
-        onChanged();
-        return this;
-      }
-      /**
-       * <code>required int64 timestamp = 1;</code>
-       */
-      public Builder clearTimestamp() {
-        bitField0_ = (bitField0_ & ~0x00000001);
-        timestamp_ = 0L;
-        onChanged();
-        return this;
-      }
+        protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internalGetFieldAccessorTable() {
+            return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable
+                .ensureFieldAccessorsInitialized(
+                    TestProto.Login_S2C.class, TestProto.Login_S2C.Builder.class);
+        }
 
-      // @@protoc_insertion_point(builder_scope:com.taobao.teaey.lostrpc.Login_S2C)
+        public static com.google.protobuf.Parser<Login_S2C> PARSER =
+            new com.google.protobuf.AbstractParser<Login_S2C>() {
+                public Login_S2C parsePartialFrom(
+                    com.google.protobuf.CodedInputStream input,
+                    com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                    throws com.google.protobuf.InvalidProtocolBufferException {
+                    return new Login_S2C(input, extensionRegistry);
+                }
+            };
+
+        @java.lang.Override
+        public com.google.protobuf.Parser<Login_S2C> getParserForType() {
+            return PARSER;
+        }
+
+        private int bitField0_;
+        // required int64 timestamp = 1;
+        public static final int TIMESTAMP_FIELD_NUMBER = 1;
+        private long timestamp_;
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        public boolean hasTimestamp() {
+            return ((bitField0_ & 0x00000001) == 0x00000001);
+        }
+
+        /**
+         * <code>required int64 timestamp = 1;</code>
+         */
+        public long getTimestamp() {
+            return timestamp_;
+        }
+
+        private void initFields() {
+            timestamp_ = 0L;
+        }
+
+        private byte memoizedIsInitialized = -1;
+
+        public final boolean isInitialized() {
+            byte isInitialized = memoizedIsInitialized;
+            if (isInitialized != -1) {
+                return isInitialized == 1;
+            }
+
+            if (!hasTimestamp()) {
+                memoizedIsInitialized = 0;
+                return false;
+            }
+            memoizedIsInitialized = 1;
+            return true;
+        }
+
+        public void writeTo(com.google.protobuf.CodedOutputStream output)
+            throws java.io.IOException {
+            getSerializedSize();
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                output.writeInt64(1, timestamp_);
+            }
+            getUnknownFields().writeTo(output);
+        }
+
+        private int memoizedSerializedSize = -1;
+
+        public int getSerializedSize() {
+            int size = memoizedSerializedSize;
+            if (size != -1) {
+                return size;
+            }
+
+            size = 0;
+            if (((bitField0_ & 0x00000001) == 0x00000001)) {
+                size += com.google.protobuf.CodedOutputStream
+                    .computeInt64Size(1, timestamp_);
+            }
+            size += getUnknownFields().getSerializedSize();
+            memoizedSerializedSize = size;
+            return size;
+        }
+
+        private static final long serialVersionUID = 0L;
+
+        @java.lang.Override
+        protected java.lang.Object writeReplace()
+            throws java.io.ObjectStreamException {
+            return super.writeReplace();
+        }
+
+        public static TestProto.Login_S2C parseFrom(
+            com.google.protobuf.ByteString data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static TestProto.Login_S2C parseFrom(
+            com.google.protobuf.ByteString data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static TestProto.Login_S2C parseFrom(byte[] data)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data);
+        }
+
+        public static TestProto.Login_S2C parseFrom(
+            byte[] data,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws com.google.protobuf.InvalidProtocolBufferException {
+            return PARSER.parseFrom(data, extensionRegistry);
+        }
+
+        public static TestProto.Login_S2C parseFrom(java.io.InputStream input)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static TestProto.Login_S2C parseFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static TestProto.Login_S2C parseDelimitedFrom(java.io.InputStream input)
+            throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input);
+        }
+
+        public static TestProto.Login_S2C parseDelimitedFrom(
+            java.io.InputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+            return PARSER.parseDelimitedFrom(input, extensionRegistry);
+        }
+
+        public static TestProto.Login_S2C parseFrom(
+            com.google.protobuf.CodedInputStream input)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input);
+        }
+
+        public static TestProto.Login_S2C parseFrom(
+            com.google.protobuf.CodedInputStream input,
+            com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+            throws java.io.IOException {
+            return PARSER.parseFrom(input, extensionRegistry);
+        }
+
+        public static Builder newBuilder() {
+            return Builder.create();
+        }
+
+        public Builder newBuilderForType() {
+            return newBuilder();
+        }
+
+        public static Builder newBuilder(TestProto.Login_S2C prototype) {
+            return newBuilder().mergeFrom(prototype);
+        }
+
+        public Builder toBuilder() {
+            return newBuilder(this);
+        }
+
+        @java.lang.Override
+        protected Builder newBuilderForType(
+            com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+            Builder builder = new Builder(parent);
+            return builder;
+        }
+
+        /**
+         * Protobuf type {@code com.taobao.teaey.lostrpc.Login_S2C}
+         */
+        public static final class Builder extends
+            com.google.protobuf.GeneratedMessage.Builder<Builder>
+            implements TestProto.Login_S2COrBuilder {
+            public static final com.google.protobuf.Descriptors.Descriptor
+            getDescriptor() {
+                return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
+            }
+
+            protected com.google.protobuf.GeneratedMessage.FieldAccessorTable
+            internalGetFieldAccessorTable() {
+                return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable
+                    .ensureFieldAccessorsInitialized(
+                        TestProto.Login_S2C.class, TestProto.Login_S2C.Builder.class);
+            }
+
+            // Construct using com.taobao.teaey.lostrpc.example.protobuf.TestProto.Login_S2C.newBuilder()
+            private Builder() {
+                maybeForceBuilderInitialization();
+            }
+
+            private Builder(
+                com.google.protobuf.GeneratedMessage.BuilderParent parent) {
+                super(parent);
+                maybeForceBuilderInitialization();
+            }
+
+            private void maybeForceBuilderInitialization() {
+                if (com.google.protobuf.GeneratedMessage.alwaysUseFieldBuilders) {
+                }
+            }
+
+            private static Builder create() {
+                return new Builder();
+            }
+
+            public Builder clear() {
+                super.clear();
+                timestamp_ = 0L;
+                bitField0_ = (bitField0_ & ~0x00000001);
+                return this;
+            }
+
+            public Builder clone() {
+                return create().mergeFrom(buildPartial());
+            }
+
+            public com.google.protobuf.Descriptors.Descriptor
+            getDescriptorForType() {
+                return TestProto.internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
+            }
+
+            public TestProto.Login_S2C getDefaultInstanceForType() {
+                return TestProto.Login_S2C.getDefaultInstance();
+            }
+
+            public TestProto.Login_S2C build() {
+                TestProto.Login_S2C result = buildPartial();
+                if (!result.isInitialized()) {
+                    throw AbstractMessage.Builder.newUninitializedMessageException(result);
+                }
+                return result;
+            }
+
+            public TestProto.Login_S2C buildPartial() {
+                TestProto.Login_S2C result = new TestProto.Login_S2C(this);
+                int from_bitField0_ = bitField0_;
+                int to_bitField0_ = 0;
+                if (((from_bitField0_ & 0x00000001) == 0x00000001)) {
+                    to_bitField0_ |= 0x00000001;
+                }
+                result.timestamp_ = timestamp_;
+                result.bitField0_ = to_bitField0_;
+                onBuilt();
+                return result;
+            }
+
+            public Builder mergeFrom(com.google.protobuf.Message other) {
+                if (other instanceof TestProto.Login_S2C) {
+                    return mergeFrom((TestProto.Login_S2C) other);
+                } else {
+                    super.mergeFrom(other);
+                    return this;
+                }
+            }
+
+            public Builder mergeFrom(TestProto.Login_S2C other) {
+                if (other == TestProto.Login_S2C.getDefaultInstance()) {
+                    return this;
+                }
+                if (other.hasTimestamp()) {
+                    setTimestamp(other.getTimestamp());
+                }
+                this.mergeUnknownFields(other.getUnknownFields());
+                return this;
+            }
+
+            public final boolean isInitialized() {
+                if (!hasTimestamp()) {
+
+                    return false;
+                }
+                return true;
+            }
+
+            public Builder mergeFrom(
+                com.google.protobuf.CodedInputStream input,
+                com.google.protobuf.ExtensionRegistryLite extensionRegistry)
+                throws java.io.IOException {
+                TestProto.Login_S2C parsedMessage = null;
+                try {
+                    parsedMessage = PARSER.parsePartialFrom(input, extensionRegistry);
+                } catch (com.google.protobuf.InvalidProtocolBufferException e) {
+                    parsedMessage = (TestProto.Login_S2C) e.getUnfinishedMessage();
+                    throw e;
+                } finally {
+                    if (parsedMessage != null) {
+                        mergeFrom(parsedMessage);
+                    }
+                }
+                return this;
+            }
+
+            private int bitField0_;
+
+            // required int64 timestamp = 1;
+            private long timestamp_;
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public boolean hasTimestamp() {
+                return ((bitField0_ & 0x00000001) == 0x00000001);
+            }
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public long getTimestamp() {
+                return timestamp_;
+            }
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public Builder setTimestamp(long value) {
+                bitField0_ |= 0x00000001;
+                timestamp_ = value;
+                onChanged();
+                return this;
+            }
+
+            /**
+             * <code>required int64 timestamp = 1;</code>
+             */
+            public Builder clearTimestamp() {
+                bitField0_ = (bitField0_ & ~0x00000001);
+                timestamp_ = 0L;
+                onChanged();
+                return this;
+            }
+
+            // @@protoc_insertion_point(builder_scope:com.taobao.teaey.lostrpc.Login_S2C)
+        }
+
+
+        static {
+            defaultInstance = new Login_S2C(true);
+            defaultInstance.initFields();
+        }
+
+        // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.Login_S2C)
     }
+
+
+    /**
+     * Protobuf service {@code com.taobao.teaey.lostrpc.LoginService}
+     */
+    public static abstract class LoginService
+        implements com.google.protobuf.Service {
+        protected LoginService() {
+        }
+
+        public interface Interface {
+            /**
+             * <code>rpc login(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
+             */
+            public abstract void login(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request,
+                com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
+
+        }
+
+        public static com.google.protobuf.Service newReflectiveService(
+            final Interface impl) {
+            return new LoginService() {
+                @java.lang.Override
+                public void login(
+                    com.google.protobuf.RpcController controller,
+                    TestProto.Login_C2S request,
+                    com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
+                    impl.login(controller, request, done);
+                }
+
+            };
+        }
+
+        public static com.google.protobuf.BlockingService
+        newReflectiveBlockingService(final BlockingInterface impl) {
+            return new com.google.protobuf.BlockingService() {
+                public final com.google.protobuf.Descriptors.ServiceDescriptor
+                getDescriptorForType() {
+                    return getDescriptor();
+                }
+
+                public final com.google.protobuf.Message callBlockingMethod(
+                    com.google.protobuf.Descriptors.MethodDescriptor method,
+                    com.google.protobuf.RpcController controller,
+                    com.google.protobuf.Message request)
+                    throws com.google.protobuf.ServiceException {
+                    if (method.getService() != getDescriptor()) {
+                        throw new java.lang.IllegalArgumentException(
+                            "Service.callBlockingMethod() given method descriptor for " +
+                                "wrong service type."
+                        );
+                    }
+                    switch (method.getIndex()) {
+                        case 0:
+                            return impl.login(controller, (TestProto.Login_C2S) request);
+                        default:
+                            throw new java.lang.AssertionError("Can't get here.");
+                    }
+                }
+
+                public final com.google.protobuf.Message
+                getRequestPrototype(
+                    com.google.protobuf.Descriptors.MethodDescriptor method) {
+                    if (method.getService() != getDescriptor()) {
+                        throw new java.lang.IllegalArgumentException(
+                            "Service.getRequestPrototype() given method " +
+                                "descriptor for wrong service type."
+                        );
+                    }
+                    switch (method.getIndex()) {
+                        case 0:
+                            return TestProto.Login_C2S.getDefaultInstance();
+                        default:
+                            throw new java.lang.AssertionError("Can't get here.");
+                    }
+                }
+
+                public final com.google.protobuf.Message
+                getResponsePrototype(
+                    com.google.protobuf.Descriptors.MethodDescriptor method) {
+                    if (method.getService() != getDescriptor()) {
+                        throw new java.lang.IllegalArgumentException(
+                            "Service.getResponsePrototype() given method " +
+                                "descriptor for wrong service type."
+                        );
+                    }
+                    switch (method.getIndex()) {
+                        case 0:
+                            return TestProto.Login_S2C.getDefaultInstance();
+                        default:
+                            throw new java.lang.AssertionError("Can't get here.");
+                    }
+                }
+
+            };
+        }
+
+        /**
+         * <code>rpc login(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
+         */
+        public abstract void login(
+            com.google.protobuf.RpcController controller,
+            TestProto.Login_C2S request,
+            com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
+
+        public static final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptor() {
+            return TestProto.getDescriptor().getServices().get(0);
+        }
+
+        public final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptorForType() {
+            return getDescriptor();
+        }
+
+        public final void callMethod(
+            com.google.protobuf.Descriptors.MethodDescriptor method,
+            com.google.protobuf.RpcController controller,
+            com.google.protobuf.Message request,
+            com.google.protobuf.RpcCallback<
+                com.google.protobuf.Message> done) {
+            if (method.getService() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                    "Service.callMethod() given method descriptor for wrong " +
+                        "service type."
+                );
+            }
+            switch (method.getIndex()) {
+                case 0:
+                    this.login(controller, (TestProto.Login_C2S) request,
+                        com.google.protobuf.RpcUtil.<TestProto.Login_S2C>specializeCallback(
+                            done)
+                    );
+                    return;
+                default:
+                    throw new java.lang.AssertionError("Can't get here.");
+            }
+        }
+
+        public final com.google.protobuf.Message
+        getRequestPrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+            if (method.getService() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                    "Service.getRequestPrototype() given method " +
+                        "descriptor for wrong service type."
+                );
+            }
+            switch (method.getIndex()) {
+                case 0:
+                    return TestProto.Login_C2S.getDefaultInstance();
+                default:
+                    throw new java.lang.AssertionError("Can't get here.");
+            }
+        }
+
+        public final com.google.protobuf.Message
+        getResponsePrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+            if (method.getService() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                    "Service.getResponsePrototype() given method " +
+                        "descriptor for wrong service type."
+                );
+            }
+            switch (method.getIndex()) {
+                case 0:
+                    return TestProto.Login_S2C.getDefaultInstance();
+                default:
+                    throw new java.lang.AssertionError("Can't get here.");
+            }
+        }
+
+        public static Stub newStub(
+            com.google.protobuf.RpcChannel channel) {
+            return new Stub(channel);
+        }
+
+        public static final class Stub extends TestProto.LoginService implements Interface {
+            private Stub(com.google.protobuf.RpcChannel channel) {
+                this.channel = channel;
+            }
+
+            private final com.google.protobuf.RpcChannel channel;
+
+            public com.google.protobuf.RpcChannel getChannel() {
+                return channel;
+            }
+
+            public void login(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request,
+                com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
+                channel.callMethod(
+                    getDescriptor().getMethods().get(0),
+                    controller,
+                    request,
+                    TestProto.Login_S2C.getDefaultInstance(),
+                    com.google.protobuf.RpcUtil.generalizeCallback(
+                        done,
+                        TestProto.Login_S2C.class,
+                        TestProto.Login_S2C.getDefaultInstance())
+                );
+            }
+        }
+
+        public static BlockingInterface newBlockingStub(
+            com.google.protobuf.BlockingRpcChannel channel) {
+            return new BlockingStub(channel);
+        }
+
+        public interface BlockingInterface {
+            public TestProto.Login_S2C login(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request)
+                throws com.google.protobuf.ServiceException;
+        }
+
+
+        private static final class BlockingStub implements BlockingInterface {
+            private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
+                this.channel = channel;
+            }
+
+            private final com.google.protobuf.BlockingRpcChannel channel;
+
+            public TestProto.Login_S2C login(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request)
+                throws com.google.protobuf.ServiceException {
+                return (TestProto.Login_S2C) channel.callBlockingMethod(
+                    getDescriptor().getMethods().get(0),
+                    controller,
+                    request,
+                    TestProto.Login_S2C.getDefaultInstance());
+            }
+
+        }
+
+        // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.LoginService)
+    }
+
+
+    /**
+     * Protobuf service {@code com.taobao.teaey.lostrpc.LoginService1}
+     */
+    public static abstract class LoginService1
+        implements com.google.protobuf.Service {
+        protected LoginService1() {
+        }
+
+        public interface Interface {
+            /**
+             * <code>rpc login1(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
+             */
+            public abstract void login1(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request,
+                com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
+
+        }
+
+        public static com.google.protobuf.Service newReflectiveService(
+            final Interface impl) {
+            return new LoginService1() {
+                @java.lang.Override
+                public void login1(
+                    com.google.protobuf.RpcController controller,
+                    TestProto.Login_C2S request,
+                    com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
+                    impl.login1(controller, request, done);
+                }
+
+            };
+        }
+
+        public static com.google.protobuf.BlockingService
+        newReflectiveBlockingService(final BlockingInterface impl) {
+            return new com.google.protobuf.BlockingService() {
+                public final com.google.protobuf.Descriptors.ServiceDescriptor
+                getDescriptorForType() {
+                    return getDescriptor();
+                }
+
+                public final com.google.protobuf.Message callBlockingMethod(
+                    com.google.protobuf.Descriptors.MethodDescriptor method,
+                    com.google.protobuf.RpcController controller,
+                    com.google.protobuf.Message request)
+                    throws com.google.protobuf.ServiceException {
+                    if (method.getService() != getDescriptor()) {
+                        throw new java.lang.IllegalArgumentException(
+                            "Service.callBlockingMethod() given method descriptor for " +
+                                "wrong service type."
+                        );
+                    }
+                    switch (method.getIndex()) {
+                        case 0:
+                            return impl.login1(controller, (TestProto.Login_C2S) request);
+                        default:
+                            throw new java.lang.AssertionError("Can't get here.");
+                    }
+                }
+
+                public final com.google.protobuf.Message
+                getRequestPrototype(
+                    com.google.protobuf.Descriptors.MethodDescriptor method) {
+                    if (method.getService() != getDescriptor()) {
+                        throw new java.lang.IllegalArgumentException(
+                            "Service.getRequestPrototype() given method " +
+                                "descriptor for wrong service type."
+                        );
+                    }
+                    switch (method.getIndex()) {
+                        case 0:
+                            return TestProto.Login_C2S.getDefaultInstance();
+                        default:
+                            throw new java.lang.AssertionError("Can't get here.");
+                    }
+                }
+
+                public final com.google.protobuf.Message
+                getResponsePrototype(
+                    com.google.protobuf.Descriptors.MethodDescriptor method) {
+                    if (method.getService() != getDescriptor()) {
+                        throw new java.lang.IllegalArgumentException(
+                            "Service.getResponsePrototype() given method " +
+                                "descriptor for wrong service type."
+                        );
+                    }
+                    switch (method.getIndex()) {
+                        case 0:
+                            return TestProto.Login_S2C.getDefaultInstance();
+                        default:
+                            throw new java.lang.AssertionError("Can't get here.");
+                    }
+                }
+
+            };
+        }
+
+        /**
+         * <code>rpc login1(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
+         */
+        public abstract void login1(
+            com.google.protobuf.RpcController controller,
+            TestProto.Login_C2S request,
+            com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
+
+        public static final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptor() {
+            return TestProto.getDescriptor().getServices().get(1);
+        }
+
+        public final com.google.protobuf.Descriptors.ServiceDescriptor
+        getDescriptorForType() {
+            return getDescriptor();
+        }
+
+        public final void callMethod(
+            com.google.protobuf.Descriptors.MethodDescriptor method,
+            com.google.protobuf.RpcController controller,
+            com.google.protobuf.Message request,
+            com.google.protobuf.RpcCallback<
+                com.google.protobuf.Message> done) {
+            if (method.getService() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                    "Service.callMethod() given method descriptor for wrong " +
+                        "service type."
+                );
+            }
+            switch (method.getIndex()) {
+                case 0:
+                    this.login1(controller, (TestProto.Login_C2S) request,
+                        com.google.protobuf.RpcUtil.<TestProto.Login_S2C>specializeCallback(
+                            done)
+                    );
+                    return;
+                default:
+                    throw new java.lang.AssertionError("Can't get here.");
+            }
+        }
+
+        public final com.google.protobuf.Message
+        getRequestPrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+            if (method.getService() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                    "Service.getRequestPrototype() given method " +
+                        "descriptor for wrong service type."
+                );
+            }
+            switch (method.getIndex()) {
+                case 0:
+                    return TestProto.Login_C2S.getDefaultInstance();
+                default:
+                    throw new java.lang.AssertionError("Can't get here.");
+            }
+        }
+
+        public final com.google.protobuf.Message
+        getResponsePrototype(
+            com.google.protobuf.Descriptors.MethodDescriptor method) {
+            if (method.getService() != getDescriptor()) {
+                throw new java.lang.IllegalArgumentException(
+                    "Service.getResponsePrototype() given method " +
+                        "descriptor for wrong service type."
+                );
+            }
+            switch (method.getIndex()) {
+                case 0:
+                    return TestProto.Login_S2C.getDefaultInstance();
+                default:
+                    throw new java.lang.AssertionError("Can't get here.");
+            }
+        }
+
+        public static Stub newStub(
+            com.google.protobuf.RpcChannel channel) {
+            return new Stub(channel);
+        }
+
+        public static final class Stub extends TestProto.LoginService1 implements Interface {
+            private Stub(com.google.protobuf.RpcChannel channel) {
+                this.channel = channel;
+            }
+
+            private final com.google.protobuf.RpcChannel channel;
+
+            public com.google.protobuf.RpcChannel getChannel() {
+                return channel;
+            }
+
+            public void login1(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request,
+                com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
+                channel.callMethod(
+                    getDescriptor().getMethods().get(0),
+                    controller,
+                    request,
+                    TestProto.Login_S2C.getDefaultInstance(),
+                    com.google.protobuf.RpcUtil.generalizeCallback(
+                        done,
+                        TestProto.Login_S2C.class,
+                        TestProto.Login_S2C.getDefaultInstance())
+                );
+            }
+        }
+
+        public static BlockingInterface newBlockingStub(
+            com.google.protobuf.BlockingRpcChannel channel) {
+            return new BlockingStub(channel);
+        }
+
+        public interface BlockingInterface {
+            public TestProto.Login_S2C login1(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request)
+                throws com.google.protobuf.ServiceException;
+        }
+
+
+        private static final class BlockingStub implements BlockingInterface {
+            private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
+                this.channel = channel;
+            }
+
+            private final com.google.protobuf.BlockingRpcChannel channel;
+
+            public TestProto.Login_S2C login1(
+                com.google.protobuf.RpcController controller,
+                TestProto.Login_C2S request)
+                throws com.google.protobuf.ServiceException {
+                return (TestProto.Login_S2C) channel.callBlockingMethod(
+                    getDescriptor().getMethods().get(0),
+                    controller,
+                    request,
+                    TestProto.Login_S2C.getDefaultInstance());
+            }
+
+        }
+
+        // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.LoginService1)
+    }
+
+
+    private static com.google.protobuf.Descriptors.Descriptor
+        internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable;
+    private static com.google.protobuf.Descriptors.Descriptor
+        internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
+    private static
+    com.google.protobuf.GeneratedMessage.FieldAccessorTable
+        internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable;
+
+    public static com.google.protobuf.Descriptors.FileDescriptor
+    getDescriptor() {
+        return descriptor;
+    }
+
+    private static com.google.protobuf.Descriptors.FileDescriptor
+        descriptor;
 
     static {
-      defaultInstance = new Login_S2C(true);
-      defaultInstance.initFields();
+        java.lang.String[] descriptorData = {
+            "\n\ntest.proto\022\030com.taobao.teaey.lostrpc\"\036" +
+                "\n\tLogin_C2S\022\021\n\ttimestamp\030\001 \002(\003\"\036\n\tLogin_" +
+                "S2C\022\021\n\ttimestamp\030\001 \002(\0032a\n\014LoginService\022Q" +
+                "\n\005login\022#.com.taobao.teaey.lostrpc.Login" +
+                "_C2S\032#.com.taobao.teaey.lostrpc.Login_S2" +
+                "C2c\n\rLoginService1\022R\n\006login1\022#.com.taoba" +
+                "o.teaey.lostrpc.Login_C2S\032#.com.taobao.t" +
+                "eaey.lostrpc.Login_S2CB\020B\tTestProtoH\001\210\001\001"
+        };
+        com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
+            new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
+                public com.google.protobuf.ExtensionRegistry assignDescriptors(
+                    com.google.protobuf.Descriptors.FileDescriptor root) {
+                    descriptor = root;
+                    internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor =
+                        getDescriptor().getMessageTypes().get(0);
+                    internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable = new
+                        com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                        internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor,
+                        new java.lang.String[] {"Timestamp",});
+                    internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor =
+                        getDescriptor().getMessageTypes().get(1);
+                    internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable = new
+                        com.google.protobuf.GeneratedMessage.FieldAccessorTable(
+                        internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor,
+                        new java.lang.String[] {"Timestamp",});
+                    return null;
+                }
+            };
+        com.google.protobuf.Descriptors.FileDescriptor
+            .internalBuildGeneratedFileFrom(descriptorData,
+                new com.google.protobuf.Descriptors.FileDescriptor[] {
+                }, assigner
+            );
     }
 
-    // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.Login_S2C)
-  }
-
-  /**
-   * Protobuf service {@code com.taobao.teaey.lostrpc.LoginService}
-   */
-  public static abstract class LoginService
-      implements com.google.protobuf.Service {
-    protected LoginService() {}
-
-    public interface Interface {
-      /**
-       * <code>rpc login(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
-       */
-      public abstract void login(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request,
-          com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
-
-    }
-
-    public static com.google.protobuf.Service newReflectiveService(
-        final Interface impl) {
-      return new LoginService() {
-        @java.lang.Override
-        public  void login(
-            com.google.protobuf.RpcController controller,
-            TestProto.Login_C2S request,
-            com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
-          impl.login(controller, request, done);
-        }
-
-      };
-    }
-
-    public static com.google.protobuf.BlockingService
-        newReflectiveBlockingService(final BlockingInterface impl) {
-      return new com.google.protobuf.BlockingService() {
-        public final com.google.protobuf.Descriptors.ServiceDescriptor
-            getDescriptorForType() {
-          return getDescriptor();
-        }
-
-        public final com.google.protobuf.Message callBlockingMethod(
-            com.google.protobuf.Descriptors.MethodDescriptor method,
-            com.google.protobuf.RpcController controller,
-            com.google.protobuf.Message request)
-            throws com.google.protobuf.ServiceException {
-          if (method.getService() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "Service.callBlockingMethod() given method descriptor for " +
-              "wrong service type.");
-          }
-          switch(method.getIndex()) {
-            case 0:
-              return impl.login(controller, (TestProto.Login_C2S)request);
-            default:
-              throw new java.lang.AssertionError("Can't get here.");
-          }
-        }
-
-        public final com.google.protobuf.Message
-            getRequestPrototype(
-            com.google.protobuf.Descriptors.MethodDescriptor method) {
-          if (method.getService() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "Service.getRequestPrototype() given method " +
-              "descriptor for wrong service type.");
-          }
-          switch(method.getIndex()) {
-            case 0:
-              return TestProto.Login_C2S.getDefaultInstance();
-            default:
-              throw new java.lang.AssertionError("Can't get here.");
-          }
-        }
-
-        public final com.google.protobuf.Message
-            getResponsePrototype(
-            com.google.protobuf.Descriptors.MethodDescriptor method) {
-          if (method.getService() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "Service.getResponsePrototype() given method " +
-              "descriptor for wrong service type.");
-          }
-          switch(method.getIndex()) {
-            case 0:
-              return TestProto.Login_S2C.getDefaultInstance();
-            default:
-              throw new java.lang.AssertionError("Can't get here.");
-          }
-        }
-
-      };
-    }
-
-    /**
-     * <code>rpc login(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
-     */
-    public abstract void login(
-        com.google.protobuf.RpcController controller,
-        TestProto.Login_C2S request,
-        com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
-
-    public static final
-        com.google.protobuf.Descriptors.ServiceDescriptor
-        getDescriptor() {
-      return TestProto.getDescriptor().getServices().get(0);
-    }
-    public final com.google.protobuf.Descriptors.ServiceDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-
-    public final void callMethod(
-        com.google.protobuf.Descriptors.MethodDescriptor method,
-        com.google.protobuf.RpcController controller,
-        com.google.protobuf.Message request,
-        com.google.protobuf.RpcCallback<
-          com.google.protobuf.Message> done) {
-      if (method.getService() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "Service.callMethod() given method descriptor for wrong " +
-          "service type.");
-      }
-      switch(method.getIndex()) {
-        case 0:
-          this.login(controller, (TestProto.Login_C2S)request,
-            com.google.protobuf.RpcUtil.<TestProto.Login_S2C>specializeCallback(
-              done));
-          return;
-        default:
-          throw new java.lang.AssertionError("Can't get here.");
-      }
-    }
-
-    public final com.google.protobuf.Message
-        getRequestPrototype(
-        com.google.protobuf.Descriptors.MethodDescriptor method) {
-      if (method.getService() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "Service.getRequestPrototype() given method " +
-          "descriptor for wrong service type.");
-      }
-      switch(method.getIndex()) {
-        case 0:
-          return TestProto.Login_C2S.getDefaultInstance();
-        default:
-          throw new java.lang.AssertionError("Can't get here.");
-      }
-    }
-
-    public final com.google.protobuf.Message
-        getResponsePrototype(
-        com.google.protobuf.Descriptors.MethodDescriptor method) {
-      if (method.getService() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "Service.getResponsePrototype() given method " +
-          "descriptor for wrong service type.");
-      }
-      switch(method.getIndex()) {
-        case 0:
-          return TestProto.Login_S2C.getDefaultInstance();
-        default:
-          throw new java.lang.AssertionError("Can't get here.");
-      }
-    }
-
-    public static Stub newStub(
-        com.google.protobuf.RpcChannel channel) {
-      return new Stub(channel);
-    }
-
-    public static final class Stub extends TestProto.LoginService implements Interface {
-      private Stub(com.google.protobuf.RpcChannel channel) {
-        this.channel = channel;
-      }
-
-      private final com.google.protobuf.RpcChannel channel;
-
-      public com.google.protobuf.RpcChannel getChannel() {
-        return channel;
-      }
-
-      public  void login(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request,
-          com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(0),
-          controller,
-          request,
-          TestProto.Login_S2C.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            TestProto.Login_S2C.class,
-            TestProto.Login_S2C.getDefaultInstance()));
-      }
-    }
-
-    public static BlockingInterface newBlockingStub(
-        com.google.protobuf.BlockingRpcChannel channel) {
-      return new BlockingStub(channel);
-    }
-
-    public interface BlockingInterface {
-      public TestProto.Login_S2C login(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request)
-          throws com.google.protobuf.ServiceException;
-    }
-
-    private static final class BlockingStub implements BlockingInterface {
-      private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
-        this.channel = channel;
-      }
-
-      private final com.google.protobuf.BlockingRpcChannel channel;
-
-      public TestProto.Login_S2C login(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request)
-          throws com.google.protobuf.ServiceException {
-        return (TestProto.Login_S2C) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(0),
-          controller,
-          request,
-          TestProto.Login_S2C.getDefaultInstance());
-      }
-
-    }
-
-    // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.LoginService)
-  }
-
-  /**
-   * Protobuf service {@code com.taobao.teaey.lostrpc.LoginService1}
-   */
-  public static abstract class LoginService1
-      implements com.google.protobuf.Service {
-    protected LoginService1() {}
-
-    public interface Interface {
-      /**
-       * <code>rpc login1(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
-       */
-      public abstract void login1(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request,
-          com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
-
-    }
-
-    public static com.google.protobuf.Service newReflectiveService(
-        final Interface impl) {
-      return new LoginService1() {
-        @java.lang.Override
-        public  void login1(
-            com.google.protobuf.RpcController controller,
-            TestProto.Login_C2S request,
-            com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
-          impl.login1(controller, request, done);
-        }
-
-      };
-    }
-
-    public static com.google.protobuf.BlockingService
-        newReflectiveBlockingService(final BlockingInterface impl) {
-      return new com.google.protobuf.BlockingService() {
-        public final com.google.protobuf.Descriptors.ServiceDescriptor
-            getDescriptorForType() {
-          return getDescriptor();
-        }
-
-        public final com.google.protobuf.Message callBlockingMethod(
-            com.google.protobuf.Descriptors.MethodDescriptor method,
-            com.google.protobuf.RpcController controller,
-            com.google.protobuf.Message request)
-            throws com.google.protobuf.ServiceException {
-          if (method.getService() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "Service.callBlockingMethod() given method descriptor for " +
-              "wrong service type.");
-          }
-          switch(method.getIndex()) {
-            case 0:
-              return impl.login1(controller, (TestProto.Login_C2S)request);
-            default:
-              throw new java.lang.AssertionError("Can't get here.");
-          }
-        }
-
-        public final com.google.protobuf.Message
-            getRequestPrototype(
-            com.google.protobuf.Descriptors.MethodDescriptor method) {
-          if (method.getService() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "Service.getRequestPrototype() given method " +
-              "descriptor for wrong service type.");
-          }
-          switch(method.getIndex()) {
-            case 0:
-              return TestProto.Login_C2S.getDefaultInstance();
-            default:
-              throw new java.lang.AssertionError("Can't get here.");
-          }
-        }
-
-        public final com.google.protobuf.Message
-            getResponsePrototype(
-            com.google.protobuf.Descriptors.MethodDescriptor method) {
-          if (method.getService() != getDescriptor()) {
-            throw new java.lang.IllegalArgumentException(
-              "Service.getResponsePrototype() given method " +
-              "descriptor for wrong service type.");
-          }
-          switch(method.getIndex()) {
-            case 0:
-              return TestProto.Login_S2C.getDefaultInstance();
-            default:
-              throw new java.lang.AssertionError("Can't get here.");
-          }
-        }
-
-      };
-    }
-
-    /**
-     * <code>rpc login1(.com.taobao.teaey.lostrpc.Login_C2S) returns (.com.taobao.teaey.lostrpc.Login_S2C);</code>
-     */
-    public abstract void login1(
-        com.google.protobuf.RpcController controller,
-        TestProto.Login_C2S request,
-        com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
-
-    public static final
-        com.google.protobuf.Descriptors.ServiceDescriptor
-        getDescriptor() {
-      return TestProto.getDescriptor().getServices().get(1);
-    }
-    public final com.google.protobuf.Descriptors.ServiceDescriptor
-        getDescriptorForType() {
-      return getDescriptor();
-    }
-
-    public final void callMethod(
-        com.google.protobuf.Descriptors.MethodDescriptor method,
-        com.google.protobuf.RpcController controller,
-        com.google.protobuf.Message request,
-        com.google.protobuf.RpcCallback<
-          com.google.protobuf.Message> done) {
-      if (method.getService() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "Service.callMethod() given method descriptor for wrong " +
-          "service type.");
-      }
-      switch(method.getIndex()) {
-        case 0:
-          this.login1(controller, (TestProto.Login_C2S)request,
-            com.google.protobuf.RpcUtil.<TestProto.Login_S2C>specializeCallback(
-              done));
-          return;
-        default:
-          throw new java.lang.AssertionError("Can't get here.");
-      }
-    }
-
-    public final com.google.protobuf.Message
-        getRequestPrototype(
-        com.google.protobuf.Descriptors.MethodDescriptor method) {
-      if (method.getService() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "Service.getRequestPrototype() given method " +
-          "descriptor for wrong service type.");
-      }
-      switch(method.getIndex()) {
-        case 0:
-          return TestProto.Login_C2S.getDefaultInstance();
-        default:
-          throw new java.lang.AssertionError("Can't get here.");
-      }
-    }
-
-    public final com.google.protobuf.Message
-        getResponsePrototype(
-        com.google.protobuf.Descriptors.MethodDescriptor method) {
-      if (method.getService() != getDescriptor()) {
-        throw new java.lang.IllegalArgumentException(
-          "Service.getResponsePrototype() given method " +
-          "descriptor for wrong service type.");
-      }
-      switch(method.getIndex()) {
-        case 0:
-          return TestProto.Login_S2C.getDefaultInstance();
-        default:
-          throw new java.lang.AssertionError("Can't get here.");
-      }
-    }
-
-    public static Stub newStub(
-        com.google.protobuf.RpcChannel channel) {
-      return new Stub(channel);
-    }
-
-    public static final class Stub extends TestProto.LoginService1 implements Interface {
-      private Stub(com.google.protobuf.RpcChannel channel) {
-        this.channel = channel;
-      }
-
-      private final com.google.protobuf.RpcChannel channel;
-
-      public com.google.protobuf.RpcChannel getChannel() {
-        return channel;
-      }
-
-      public  void login1(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request,
-          com.google.protobuf.RpcCallback<TestProto.Login_S2C> done) {
-        channel.callMethod(
-          getDescriptor().getMethods().get(0),
-          controller,
-          request,
-          TestProto.Login_S2C.getDefaultInstance(),
-          com.google.protobuf.RpcUtil.generalizeCallback(
-            done,
-            TestProto.Login_S2C.class,
-            TestProto.Login_S2C.getDefaultInstance()));
-      }
-    }
-
-    public static BlockingInterface newBlockingStub(
-        com.google.protobuf.BlockingRpcChannel channel) {
-      return new BlockingStub(channel);
-    }
-
-    public interface BlockingInterface {
-      public TestProto.Login_S2C login1(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request)
-          throws com.google.protobuf.ServiceException;
-    }
-
-    private static final class BlockingStub implements BlockingInterface {
-      private BlockingStub(com.google.protobuf.BlockingRpcChannel channel) {
-        this.channel = channel;
-      }
-
-      private final com.google.protobuf.BlockingRpcChannel channel;
-
-      public TestProto.Login_S2C login1(
-          com.google.protobuf.RpcController controller,
-          TestProto.Login_C2S request)
-          throws com.google.protobuf.ServiceException {
-        return (TestProto.Login_S2C) channel.callBlockingMethod(
-          getDescriptor().getMethods().get(0),
-          controller,
-          request,
-          TestProto.Login_S2C.getDefaultInstance());
-      }
-
-    }
-
-    // @@protoc_insertion_point(class_scope:com.taobao.teaey.lostrpc.LoginService1)
-  }
-
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable;
-  private static com.google.protobuf.Descriptors.Descriptor
-    internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor;
-  private static
-    com.google.protobuf.GeneratedMessage.FieldAccessorTable
-      internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable;
-
-  public static com.google.protobuf.Descriptors.FileDescriptor
-      getDescriptor() {
-    return descriptor;
-  }
-  private static com.google.protobuf.Descriptors.FileDescriptor
-      descriptor;
-  static {
-    java.lang.String[] descriptorData = {
-      "\n\ntest.proto\022\030com.taobao.teaey.lostrpc\"\036" +
-      "\n\tLogin_C2S\022\021\n\ttimestamp\030\001 \002(\003\"\036\n\tLogin_" +
-      "S2C\022\021\n\ttimestamp\030\001 \002(\0032a\n\014LoginService\022Q" +
-      "\n\005login\022#.com.taobao.teaey.lostrpc.Login" +
-      "_C2S\032#.com.taobao.teaey.lostrpc.Login_S2" +
-      "C2c\n\rLoginService1\022R\n\006login1\022#.com.taoba" +
-      "o.teaey.lostrpc.Login_C2S\032#.com.taobao.t" +
-      "eaey.lostrpc.Login_S2CB\020B\tTestProtoH\001\210\001\001"
-    };
-    com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner assigner =
-      new com.google.protobuf.Descriptors.FileDescriptor.InternalDescriptorAssigner() {
-        public com.google.protobuf.ExtensionRegistry assignDescriptors(
-            com.google.protobuf.Descriptors.FileDescriptor root) {
-          descriptor = root;
-          internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor =
-            getDescriptor().getMessageTypes().get(0);
-          internal_static_com_taobao_teaey_lostrpc_Login_C2S_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_taobao_teaey_lostrpc_Login_C2S_descriptor,
-              new java.lang.String[] { "Timestamp", });
-          internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor =
-            getDescriptor().getMessageTypes().get(1);
-          internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable = new
-            com.google.protobuf.GeneratedMessage.FieldAccessorTable(
-              internal_static_com_taobao_teaey_lostrpc_Login_S2C_descriptor,
-              new java.lang.String[] { "Timestamp", });
-          return null;
-        }
-      };
-    com.google.protobuf.Descriptors.FileDescriptor
-      .internalBuildGeneratedFileFrom(descriptorData,
-        new com.google.protobuf.Descriptors.FileDescriptor[] {
-        }, assigner);
-  }
-
-  // @@protoc_insertion_point(outer_class_scope)
+    // @@protoc_insertion_point(outer_class_scope)
 }

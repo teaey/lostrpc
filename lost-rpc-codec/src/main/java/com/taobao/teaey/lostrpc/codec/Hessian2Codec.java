@@ -17,7 +17,8 @@ public class Hessian2Codec implements Codec {
         this.factory = factory;
     }
 
-    public static final Hessian2Codec INSTANCE = new Hessian2Codec(new SerializerFactory(Codec.class.getClassLoader()));
+    public static final Hessian2Codec INSTANCE =
+        new Hessian2Codec(new SerializerFactory(Codec.class.getClassLoader()));
 
     @Override
     public Object decode(byte[] bytes) throws Exception {

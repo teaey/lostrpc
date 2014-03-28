@@ -84,7 +84,8 @@ public class TightLoggingHandler extends ChannelDuplexHandler {
     }
 
     @Override
-    public void bind(ChannelHandlerContext ctx, SocketAddress localAddress, ChannelPromise promise) throws Exception {
+    public void bind(ChannelHandlerContext ctx, SocketAddress localAddress, ChannelPromise promise)
+        throws Exception {
         super.bind(ctx, localAddress, promise);
         if (logger.isDebugEnabled()) {
             logger.debug(format(ctx, "BIND(" + localAddress + ')'));
@@ -92,8 +93,9 @@ public class TightLoggingHandler extends ChannelDuplexHandler {
     }
 
     @Override
-    public void connect(ChannelHandlerContext ctx, SocketAddress remoteAddress, SocketAddress localAddress,
-                        ChannelPromise promise) throws Exception {
+    public void connect(ChannelHandlerContext ctx, SocketAddress remoteAddress,
+        SocketAddress localAddress,
+        ChannelPromise promise) throws Exception {
         super.connect(ctx, remoteAddress, localAddress, promise);
         if (logger.isDebugEnabled()) {
             logger.debug(format(ctx, "CONNECT(" + remoteAddress + ", " + localAddress + ')'));
@@ -133,7 +135,8 @@ public class TightLoggingHandler extends ChannelDuplexHandler {
     }
 
     @Override
-    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise) throws Exception {
+    public void write(ChannelHandlerContext ctx, Object msg, ChannelPromise promise)
+        throws Exception {
         if (logger.isDebugEnabled()) {
             logMessage(ctx, "WRITE", msg);
         }

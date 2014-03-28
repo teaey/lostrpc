@@ -1,9 +1,10 @@
-package com.taobao.teaey.lostrpc.common;
+package com.taobao.teaey.lostrpc;
 
 /**
  * @author xiaofei.wxf
  */
 public interface Connection {
-    int getId();
+    long getId();
+
     void writeAndFlush(Object msg);
 }

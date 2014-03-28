@@ -25,6 +25,7 @@ public enum Cmd {
         }
     }
 
+
     private byte type;
     private String desc;
 
@@ -48,8 +49,8 @@ public enum Cmd {
     @Override
     public String toString() {
         return "Cmd{" +
-                "type=" + type +
-                ", desc='" + desc + '\'' +
-                '}';
+            "type=" + type +
+            ", desc='" + desc + '\'' +
+            '}';
     }
 }

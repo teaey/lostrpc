@@ -1,5 +1,6 @@
 package com.taobao.teaey.lostrpc.common;
 
+import com.taobao.teaey.lostrpc.Connection;
 import io.netty.channel.Channel;
 
 /**
@@ -13,7 +14,7 @@ public class NettyConnection implements Connection {
     }
 
     @Override
-    public int getId() {
+    public long getId() {
         return this.channel.hashCode();
     }
 

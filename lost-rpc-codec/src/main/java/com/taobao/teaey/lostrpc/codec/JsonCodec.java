@@ -2,6 +2,7 @@ package com.taobao.teaey.lostrpc.codec;
 
 /**
  * 目前使用Fastjson进行json序列化和反序列化
+ *
  * @author xiaofei.wxf email:masfay@163.com
  */
 public class JsonCodec implements Codec {
@@ -26,13 +27,17 @@ public class JsonCodec implements Codec {
      */
     @Override
     public byte[] encode(Object obj) throws Exception {
-        if (null == obj) return NULL_BYTES;
+        if (null == obj) {
+            return NULL_BYTES;
+        }
         String str = com.alibaba.fastjson.JSON.toJSONString(obj);
         return str.getBytes(DEFAULT_CHARSET);
     }
 
     public String encode2String(Object obj) {
-        if (null == obj) return NULL;
+        if (null == obj) {
+            return NULL;
+        }
         return com.alibaba.fastjson.JSON.toJSONString(obj);
     }
 }

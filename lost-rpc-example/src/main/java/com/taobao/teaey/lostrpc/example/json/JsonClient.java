@@ -1,9 +1,9 @@
 package com.taobao.teaey.lostrpc.example.json;
 
 import com.alibaba.fastjson.JSON;
+import com.taobao.teaey.lostrpc.Connection;
 import com.taobao.teaey.lostrpc.Dispatcher;
 import com.taobao.teaey.lostrpc.client.NettyClient;
-import com.taobao.teaey.lostrpc.common.Connection;
 import com.taobao.teaey.lostrpc.common.JsonInitializer;
 import com.taobao.teaey.lostrpc.common.Safety;
 import io.netty.channel.ChannelFuture;
@@ -23,7 +23,8 @@ public class JsonClient {
             public void dispatch(Connection o, Object p) {
                 System.out.println("收到响应:\n" + JSON.toJSONString(p));
             }
-        }).initializer(JsonInitializer.newInstance(Safety.NOT_SAFETY_CLIENT)).connect(new InetSocketAddress(8888)).run();
+        }).initializer(JsonInitializer.newInstance(Safety.NOT_SAFETY_CLIENT))
+            .connect(new InetSocketAddress(8888)).run();
         try {
             ChannelFuture future = client.ask(new Date());
             future.sync();

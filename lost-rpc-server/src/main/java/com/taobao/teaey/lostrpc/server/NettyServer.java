@@ -41,7 +41,7 @@ public class NettyServer<ReqType> implements Server<Channel, ReqType, NettyServe
     public NettyServer initializer(NettyChannelInitializer initializer) {
         this.initializer = initializer;
         if (this.dispatcher != null) {
-            this.initializer.dispatchHandler(new DispatchHandler(this.dispatcher));
+            this.initializer.bridgeHandler(new DispatchHandler(this.dispatcher));
         }
         return this;
     }
@@ -54,7 +54,8 @@ public class NettyServer<ReqType> implements Server<Channel, ReqType, NettyServe
         if (null == initializer) {
             throw new NullPointerException("channel initializer");
         }
-        b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class).childHandler(this.initializer);
+        b.group(bossGroup, workerGroup).channel(NioServerSocketChannel.class)
+            .childHandler(this.initializer);
         try {
             ChannelFuture f = b.bind(addr).sync();
             f.channel().closeFuture().sync();
@@ -95,16 +96,16 @@ public class NettyServer<ReqType> implements Server<Channel, ReqType, NettyServe
     public NettyServer dispatcher(Dispatcher dispatcher) {
         this.dispatcher = dispatcher;
         if (this.initializer != null) {
-            this.initializer.dispatchHandler(new DispatchHandler(this.dispatcher));
+            this.initializer.bridgeHandler(new DispatchHandler(this.dispatcher));
         }
         return this;
     }
 
     protected ServerBootstrap newServerBootStrap() {
         return new ServerBootstrap().option(ChannelOption.SO_REUSEADDR, true)
-                .option(ChannelOption.SO_BACKLOG, 100000)
-                .childOption(ChannelOption.SO_KEEPALIVE, true)
-                .childOption(ChannelOption.SO_LINGER, -1)
-                .childOption(ChannelOption.TCP_NODELAY, true);
+            .option(ChannelOption.SO_BACKLOG, 100000)
+            .childOption(ChannelOption.SO_KEEPALIVE, true)
+            .childOption(ChannelOption.SO_LINGER, -1)
+            .childOption(ChannelOption.TCP_NODELAY, true);
     }
 }

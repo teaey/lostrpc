@@ -1,4 +1,4 @@
-package com.taobao.teaey.lostrpc.common;
+package com.taobao.teaey.lostrpc.dispatcher;
 
 import com.taobao.teaey.lostrpc.concurrent.AsyncExecutor;
 
@@ -7,7 +7,7 @@ import com.taobao.teaey.lostrpc.concurrent.AsyncExecutor;
  */
 public abstract class AsyncDispatcher<MsgType> extends CustomDispatcher<MsgType> {
     public AsyncDispatcher(int threadNum) {
-        super(new AsyncExecutor(threadNum));
+        super(AsyncExecutor.newOne(threadNum));
     }
 
     public AsyncDispatcher() {

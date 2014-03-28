@@ -19,7 +19,8 @@ public class ProtobufInitializer extends NettyChannelInitializer {
     private final static Logger logger = LoggerFactory.getLogger(NettyChannelInitializer.class);
 
 
-    public static NettyChannelInitializer newInstance(Safety safety, MessageLite prototype, ChannelHandler... handler) {
+    public static NettyChannelInitializer newInstance(Safety safety, MessageLite prototype,
+        ChannelHandler... handler) {
         return new ProtobufInitializer(safety, prototype, handler);
     }
 
@@ -37,6 +38,7 @@ public class ProtobufInitializer extends NettyChannelInitializer {
 
         HAS_PARSER = hasParser;
     }
+
 
     private class Encoder extends PacketFrameEncoder {
         public Encoder(Safety safety) {
@@ -56,6 +58,7 @@ public class ProtobufInitializer extends NettyChannelInitializer {
             return body;
         }
     }
+
 
     private class Decoder extends PacketFrameDecoder {
 
@@ -97,6 +100,7 @@ public class ProtobufInitializer extends NettyChannelInitializer {
             return ret;
         }
     }
+
 
     private final MessageLite defaultIns;
 

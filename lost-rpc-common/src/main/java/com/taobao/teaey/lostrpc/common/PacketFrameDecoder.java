@@ -23,17 +23,20 @@ public abstract class PacketFrameDecoder extends ByteToMessageDecoder {
     @Override
     public void channelActive(ChannelHandlerContext ctx) throws Exception {
         super.channelActive(ctx);
-//        if (!safety.isServer()) {
-//            ByteBuf buf = Unpooled.buffer(5);
-//            buf.writeInt(0);
-//            buf.writeByte(Cmd.CMD_SYNCKEY_REQ.getType());
-//            ctx.writeAndFlush(buf);
-//        }
+        //        if (!safety.isServer()) {
+        //            ByteBuf buf = Unpooled.buffer(5);
+        //            buf.writeInt(0);
+        //            buf.writeByte(Cmd.CMD_SYNCKEY_REQ.getType());
+        //            ctx.writeAndFlush(buf);
+        //        }
     }
 
     @Override
-    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out) throws Exception {
-        if (in.readableBytes() < 5) return;
+    protected void decode(ChannelHandlerContext ctx, ByteBuf in, List<Object> out)
+        throws Exception {
+        if (in.readableBytes() < 5) {
+            return;
+        }
 
         in.markReaderIndex();
 

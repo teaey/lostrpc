@@ -8,7 +8,8 @@ import com.google.protobuf.ServiceException;
  */
 public class LoginServiceImpl implements TestProto.LoginService.BlockingInterface {
     @Override
-    public TestProto.Login_S2C login(RpcController controller, TestProto.Login_C2S request) throws ServiceException {
+    public TestProto.Login_S2C login(RpcController controller, TestProto.Login_C2S request)
+        throws ServiceException {
         return TestProto.Login_S2C.newBuilder().setTimestamp(System.currentTimeMillis()).build();
     }
 }

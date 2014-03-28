@@ -21,7 +21,8 @@ import java.net.SocketAddress;
 /**
  * Created by xiaofei.wxf on 14-2-13.
  */
-public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType, Channel, NettyClient> {
+public class NettyClient<ReqType, RespType>
+    implements Client<ReqType, RespType, Channel, NettyClient> {
     private final Bootstrap b = newBootstrap();
     private final EventLoopGroup workerGroup = new NioEventLoopGroup();
     private SocketAddress addr;
@@ -43,7 +44,7 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
         this.initializer = initializer;
         this.safety = this.initializer.getSafety();
         if (null != this.dispatcherHandler) {
-            this.initializer.dispatchHandler(this.dispatcherHandler);
+            this.initializer.bridgeHandler(this.dispatcherHandler);
         }
         return this;
     }
@@ -51,7 +52,7 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
     public NettyClient dispatcher(Dispatcher dispatcher) {
         this.dispatcherHandler = new DispatchHandler(dispatcher);
         if (this.initializer != null) {
-            this.initializer.dispatchHandler(dispatcherHandler);
+            this.initializer.bridgeHandler(dispatcherHandler);
         }
         return this;
     }
@@ -65,7 +66,9 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
             throw new NullPointerException("channel initializer");
         }
         try {
-            this.channel = b.group(workerGroup).channel(NioSocketChannel.class).handler(this.initializer).connect(addr).sync().channel();
+            this.channel =
+                b.group(workerGroup).channel(NioSocketChannel.class).handler(this.initializer)
+                    .connect(addr).sync().channel();
         } catch (InterruptedException e) {
             shutdown();
         }
@@ -105,7 +108,7 @@ public class NettyClient<ReqType, RespType> implements Client<ReqType, RespType,
 
     protected Bootstrap newBootstrap() {
         return new Bootstrap().option(ChannelOption.SO_LINGER, -1)
-                .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1000)
-                .option(ChannelOption.TCP_NODELAY, true);
+            .option(ChannelOption.CONNECT_TIMEOUT_MILLIS, 1000)
+            .option(ChannelOption.TCP_NODELAY, true);
     }
 }

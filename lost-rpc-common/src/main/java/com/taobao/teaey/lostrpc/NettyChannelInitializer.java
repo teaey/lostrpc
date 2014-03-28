@@ -39,10 +39,10 @@ public abstract class NettyChannelInitializer extends ChannelInitializer {
             ch.pipeline().addLast("LOGGING_HANDLER", LOGGING_HANDLER);
         }
         handlers(ch);
-        ch.pipeline().addLast(this.dispatchHandler);
+        ch.pipeline().addLast(this.bridgeHandler);
     }
 
-    private DispatchHandler dispatchHandler;
+    private DispatchHandler bridgeHandler;
 
     protected abstract void decoders(Channel ch) throws Exception;
 
@@ -52,7 +52,7 @@ public abstract class NettyChannelInitializer extends ChannelInitializer {
 
     protected abstract Logger getLogger();
 
-    public void dispatchHandler(DispatchHandler dispatcher) {
-        this.dispatchHandler = dispatcher;
+    public void bridgeHandler(DispatchHandler dispatcher) {
+        this.bridgeHandler = dispatcher;
     }
 }
