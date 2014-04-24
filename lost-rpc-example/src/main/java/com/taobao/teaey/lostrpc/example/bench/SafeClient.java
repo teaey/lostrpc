@@ -16,7 +16,7 @@ import java.util.concurrent.CountDownLatch;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by xiaofei.wxf on 2014/3/19.
+ * @author xiaofei.wxf on 2014/3/19.
  */
 public class SafeClient {
     private CountDownLatch cc;

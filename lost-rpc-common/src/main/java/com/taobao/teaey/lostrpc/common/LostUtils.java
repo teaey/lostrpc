@@ -8,7 +8,7 @@ import java.io.InputStream;
 import java.io.InputStreamReader;
 
 /**
- * Created by xiaofei.wxf on 14-2-13.
+ * @author xiaofei.wxf on 14-2-13.
  */
 public class LostUtils {
     public static byte[] processKeyStore(InputStream is) throws IOException {

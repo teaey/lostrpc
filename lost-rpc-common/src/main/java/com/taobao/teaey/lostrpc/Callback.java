@@ -6,7 +6,7 @@ import java.util.concurrent.Future;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by xiaofei.wxf on 14-2-13.
+ * @author xiaofei.wxf on 14-2-13.
  */
 public interface Callback<AnswerType> extends RpcCallback<AnswerType>, Future<AnswerType> {
     public static final int ST_INIT = 1;

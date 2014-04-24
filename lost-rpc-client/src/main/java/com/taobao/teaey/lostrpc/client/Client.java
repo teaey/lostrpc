@@ -5,7 +5,7 @@ import com.taobao.teaey.lostrpc.Dispatcher;
 import java.net.InetSocketAddress;
 
 /**
- * Created by xiaofei.wxf on 14-2-13.
+ * @author xiaofei.wxf on 14-2-13.
  */
 public interface Client<ReqType, RespType, Channel, T extends Client> {
 

@@ -5,7 +5,7 @@ import io.netty.channel.Channel;
 import java.util.concurrent.TimeUnit;
 
 /**
- * Created by xiaofei.wxf on 14-2-13.
+ * @author xiaofei.wxf on 14-2-13.
  */
 public abstract class LostRpcCallback<AnswerType> implements Callback<AnswerType> {
     private final Channel channel;

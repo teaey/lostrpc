@@ -9,7 +9,7 @@ import io.netty.channel.ChannelInitializer;
 import org.slf4j.Logger;
 
 /**
- * Created by xiaofei.wxf on 14-2-14.
+ * @author xiaofei.wxf on 14-2-14.
  */
 public abstract class NettyChannelInitializer extends ChannelInitializer {
 

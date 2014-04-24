@@ -19,7 +19,7 @@ import java.net.InetSocketAddress;
 import java.net.SocketAddress;
 
 /**
- * Created by xiaofei.wxf on 14-2-13.
+ * @author xiaofei.wxf on 14-2-13.
  */
 public class NettyClient<ReqType, RespType>
     implements Client<ReqType, RespType, Channel, NettyClient> {

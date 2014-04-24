@@ -17,7 +17,7 @@ import org.junit.Before;
 import org.junit.Test;
 
 /**
- * Created by xiaofei.wxf on 2014/3/19.
+ * @author xiaofei.wxf on 2014/3/19.
  */
 public class SafeServer {
 
