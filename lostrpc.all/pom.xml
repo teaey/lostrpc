@@ -3,7 +3,7 @@
          xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
     <parent>
-        <artifactId>lostrpc</artifactId>
+        <artifactId>lostrpc.parent</artifactId>
         <groupId>cn.teaey</groupId>
         <version>1.0.0.1-SNAPSHOT</version>
     </parent>
@@ -44,19 +44,19 @@
                     </execution>
 
                     <!-- Unpack all source files -->
-                    <execution>
-                        <id>unpack-sources</id>
-                        <phase>prepare-package</phase>
-                        <goals>
-                            <goal>unpack-dependencies</goal>
-                        </goals>
-                        <configuration>
-                            <classifier>sources</classifier>
-                            <includes>cn/teaey/lostrpc/**</includes>
-                            <includeGroupIds>${project.groupId}</includeGroupIds>
-                            <outputDirectory>${generatedSourceDir}</outputDirectory>
-                        </configuration>
-                    </execution>
+                    <!--<execution>-->
+                        <!--<id>unpack-sources</id>-->
+                        <!--<phase>prepare-package</phase>-->
+                        <!--<goals>-->
+                            <!--<goal>unpack-dependencies</goal>-->
+                        <!--</goals>-->
+                        <!--<configuration>-->
+                            <!--<classifier>sources</classifier>-->
+                            <!--<includes>cn/teaey/lostrpc/**</includes>-->
+                            <!--<includeGroupIds>${project.groupId}</includeGroupIds>-->
+                            <!--<outputDirectory>${generatedSourceDir}</outputDirectory>-->
+                        <!--</configuration>-->
+                    <!--</execution>-->
 
                     <!-- Unpack all class files -->
                     <execution>
