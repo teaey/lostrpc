@@ -1,8 +1,6 @@
 ![Alt text](lostrpc.resources/logo.png)
 ========
 
-异步跨语言的RPC框架
-
 ## 特性
 
 > * 支持很多编码解码器（Protobuf【跨语言】、Hessian、JDK、Kryo)
