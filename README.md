@@ -19,7 +19,7 @@ lost-rpc
 
 ## 结构图
 
-![Alt text](structurechart.jpg)
+![Alt text](lostrpc.resources/structurechart.jpg)
 
 ## 未来
 

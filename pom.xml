@@ -6,7 +6,7 @@
     <groupId>cn.teaey</groupId>
     <artifactId>lostrpc.parent</artifactId>
     <packaging>pom</packaging>
-    <version>1.0.0.1-SNAPSHOT</version>
+    <version>${lost.rpc.version}</version>
     <modules>
         <module>lostrpc.concurrent</module>
         <module>lostrpc.codec</module>
@@ -22,6 +22,7 @@
     <name>LostRpc/Parent</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+        <lost.rpc.version>1.0.0.1</lost.rpc.version>
     </properties>
     <dependencies>
         <dependency>
@@ -41,12 +42,12 @@
             <dependency>
                 <groupId>org.slf4j</groupId>
                 <artifactId>slf4j-api</artifactId>
-                <version>1.7.5</version>
+                <version>1.7.7</version>
             </dependency>
             <dependency>
                 <groupId>ch.qos.logback</groupId>
                 <artifactId>logback-classic</artifactId>
-                <version>1.0.13</version>
+                <version>1.1.2</version>
             </dependency>
             <dependency>
                 <groupId>com.google.protobuf</groupId>
@@ -78,7 +79,6 @@
                 <artifactId>gson</artifactId>
                 <version>2.2.4</version>
             </dependency>
-
         </dependencies>
     </dependencyManagement>
 
