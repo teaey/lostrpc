@@ -1,25 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<project xmlns="http://maven.apache.org/POM/4.0.0"
-         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+<project xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xmlns="http://maven.apache.org/POM/4.0.0"
          xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
 
-    <groupId>lost-rpc</groupId>
+    <groupId>cn.teaey</groupId>
+    <artifactId>lostrpc</artifactId>
     <packaging>pom</packaging>
     <version>1.0.0.1-SNAPSHOT</version>
     <modules>
-        <module>lost-rpc-concurrent</module>
-        <module>lost-rpc-codec</module>
-        <module>lost-rpc-common</module>
-        <module>lost-rpc-server</module>
-        <module>lost-rpc-client</module>
-        <module>lost-rpc-all</module>
-        <module>lost-rpc-example</module>
-        <module>lost-rpc-safety</module>
+        <module>lostrpc.concurrent</module>
+        <module>lostrpc.codec</module>
+        <module>lostrpc.common</module>
+        <module>lostrpc.server</module>
+        <module>lostrpc.client</module>
+        <module>lostrpc.all</module>
+        <module>lostrpc.example</module>
+        <module>lostrpc.resources</module>
     </modules>
 
     <modelVersion>4.0.0</modelVersion>
-
-    <artifactId>lost-rpc</artifactId>
     <name>LostRpc</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -56,8 +55,8 @@
             </dependency>
             <dependency>
                 <groupId>io.netty</groupId>
-                <artifactId>netty</artifactId>
-                <version>4.0.15.Final</version>
+                <artifactId>netty-all</artifactId>
+                <version>4.0.23.Final</version>
             </dependency>
             <dependency>
                 <groupId>org.javassist</groupId>
