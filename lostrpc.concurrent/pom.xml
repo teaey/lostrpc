@@ -5,7 +5,7 @@
     <parent>
         <artifactId>lostrpc.parent</artifactId>
         <groupId>cn.teaey</groupId>
-        <version>${lost.rpc.version}</version>
+        <version>1.0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 

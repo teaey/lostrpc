@@ -33,6 +33,7 @@ public abstract class CustomDispatcher<MsgType> implements Dispatcher<MsgType> {
     public class CustomTask implements IdentityTask {
         Connection c;
         MsgType p;
+
         CustomTask(Connection c, MsgType p) {
             if (null == c) {
                 throw new NullPointerException("connection");

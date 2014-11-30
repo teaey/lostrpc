@@ -64,7 +64,7 @@ public class SafeServer {
         NettyServer.newInstance()
             .dispatcher(ServiceInvokerDispatcher
                 .newOne(AsyncExecutor.newOne(2), ProtobufServiceInvoker.theOne()))
-            .initializer(ProtobufInitializer.newInstance(Safety.NOT_SAFETY_SERVER,ctx,
+            .initializer(ProtobufInitializer.newInstance(Safety.NOT_SAFETY_SERVER, ctx,
                 LostProto.Packet.getDefaultInstance()))
             .bind(8888).run();
     }

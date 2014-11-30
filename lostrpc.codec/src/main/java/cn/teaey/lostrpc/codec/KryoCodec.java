@@ -20,6 +20,7 @@ public class KryoCodec implements Codec {
             return kryo;
         }
     };
+
     private KryoCodec() {
     }
 

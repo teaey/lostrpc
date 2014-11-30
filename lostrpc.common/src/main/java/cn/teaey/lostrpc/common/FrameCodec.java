@@ -22,7 +22,7 @@ public class FrameCodec {
         }
     }
 
-    public static MessageToByteEncoder newEncoder(Safety safety, Codec codec, Ctx ctx){
+    public static MessageToByteEncoder newEncoder(Safety safety, Codec codec, Ctx ctx) {
         String frameCodec = (String) ctx.get("frameCodec");
         if (null == frameCodec || frameCodec.length() == 0 || frameCodec
             .equals(TYPE)) {

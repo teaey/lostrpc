@@ -6,7 +6,7 @@
     <groupId>cn.teaey</groupId>
     <artifactId>lostrpc.parent</artifactId>
     <packaging>pom</packaging>
-    <version>${lost.rpc.version}</version>
+    <version>1.0.0.1</version>
     <modules>
         <module>lostrpc.concurrent</module>
         <module>lostrpc.codec</module>
@@ -22,7 +22,6 @@
     <name>LostRpc/Parent</name>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
-        <lost.rpc.version>1.0.0.1</lost.rpc.version>
     </properties>
     <dependencies>
         <dependency>

@@ -18,6 +18,7 @@ public final class TestProto {
         internal_static_com_taobao_teaey_lostrpc_Login_S2C_fieldAccessorTable;
     private static com.google.protobuf.Descriptors.FileDescriptor
         descriptor;
+
     static {
         java.lang.String[] descriptorData = {
             "\n\ntest.proto\022\030com.taobao.teaey.lostrpc\"\036" +
@@ -68,6 +69,7 @@ public final class TestProto {
     getDescriptor() {
         return descriptor;
     }
+
     public interface Login_C2SOrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
@@ -83,6 +85,8 @@ public final class TestProto {
          */
         long getTimestamp();
     }
+
+
     public interface Login_S2COrBuilder
         extends com.google.protobuf.MessageOrBuilder {
 
@@ -1145,6 +1149,7 @@ public final class TestProto {
 
         }
 
+
         public interface BlockingInterface {
             public TestProto.Login_S2C login(
                 com.google.protobuf.RpcController controller,
@@ -1388,6 +1393,7 @@ public final class TestProto {
                 com.google.protobuf.RpcCallback<TestProto.Login_S2C> done);
 
         }
+
 
         public interface BlockingInterface {
             public TestProto.Login_S2C login1(

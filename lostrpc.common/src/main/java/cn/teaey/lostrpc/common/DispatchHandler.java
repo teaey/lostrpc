@@ -1,6 +1,5 @@
 package cn.teaey.lostrpc.common;
 
-import cn.teaey.lostrpc.Dispatcher;
 import cn.teaey.lostrpc.Connection;
 import cn.teaey.lostrpc.Dispatcher;
 import io.netty.channel.ChannelHandler;

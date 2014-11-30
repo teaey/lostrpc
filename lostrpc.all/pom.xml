@@ -5,7 +5,7 @@
     <parent>
         <artifactId>lostrpc.parent</artifactId>
         <groupId>cn.teaey</groupId>
-        <version>${lost.rpc.version}</version>
+        <version>1.0.0.1</version>
     </parent>
     <modelVersion>4.0.0</modelVersion>
 
@@ -45,17 +45,17 @@
 
                     <!-- Unpack all source files -->
                     <!--<execution>-->
-                        <!--<id>unpack-sources</id>-->
-                        <!--<phase>prepare-package</phase>-->
-                        <!--<goals>-->
-                            <!--<goal>unpack-dependencies</goal>-->
-                        <!--</goals>-->
-                        <!--<configuration>-->
-                            <!--<classifier>sources</classifier>-->
-                            <!--<includes>cn/teaey/lostrpc/**</includes>-->
-                            <!--<includeGroupIds>${project.groupId}</includeGroupIds>-->
-                            <!--<outputDirectory>${generatedSourceDir}</outputDirectory>-->
-                        <!--</configuration>-->
+                    <!--<id>unpack-sources</id>-->
+                    <!--<phase>prepare-package</phase>-->
+                    <!--<goals>-->
+                    <!--<goal>unpack-dependencies</goal>-->
+                    <!--</goals>-->
+                    <!--<configuration>-->
+                    <!--<classifier>sources</classifier>-->
+                    <!--<includes>cn/teaey/lostrpc/**</includes>-->
+                    <!--<includeGroupIds>${project.groupId}</includeGroupIds>-->
+                    <!--<outputDirectory>${generatedSourceDir}</outputDirectory>-->
+                    <!--</configuration>-->
                     <!--</execution>-->
 
                     <!-- Unpack all class files -->
@@ -81,31 +81,26 @@
             <groupId>${project.groupId}</groupId>
             <artifactId>lostrpc.concurrent</artifactId>
             <version>${project.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>lostrpc.codec</artifactId>
             <version>${project.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>lostrpc.common</artifactId>
             <version>${project.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>lostrpc.client</artifactId>
             <version>${project.version}</version>
-            <optional>true</optional>
         </dependency>
         <dependency>
             <groupId>${project.groupId}</groupId>
             <artifactId>lostrpc.server</artifactId>
             <version>${project.version}</version>
-            <optional>true</optional>
         </dependency>
 
         <dependency>

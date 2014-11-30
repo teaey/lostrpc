@@ -1,7 +1,6 @@
 package cn.teaey.lostrpc.server;
 
 import cn.teaey.lostrpc.RpcSession;
-import cn.teaey.lostrpc.RpcSession;
 
 /**
  * @author xiaofei.wxf
