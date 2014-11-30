@@ -1,4 +1,4 @@
-package com.taobao.teaey.lostrpc.example.protobuf;
+package cn.teaey.lostrpc.example.protobuf;
 
 option java_outer_classname = "TestProto";
 
